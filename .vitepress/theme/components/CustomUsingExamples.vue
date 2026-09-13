@@ -1,19 +1,20 @@
 <template>
-	<div class='using-examples' v-if='usingExamples.length!==0'>
+	<div class='using-examples' v-if='visibleExamples.length!==0'>
 		<div class='using-examples_head'>
-			<h1 class='using-examples_head__title'>使用案例</h1>
+			<h1 class='using-examples_head__title'>{{ title }}</h1>
 			<p class='using-examples_head__subtitle'>
 				免费开源，以下站长都在使用
 			</p>
 			<div>
 				<a class='btn-submit-example' href='https://github.com/uni-halo/uni-halo/issues/23' target='_blank'
 					 title='提交我的案例'>提交我的案例</a>
+				<a v-if='limited' class='btn-all-examples' href='/examples/' title='查看全部案例'>查看全部案例 →</a>
 			</div>
 		</div>
 		<ul class='using-examples_list'>
 			<li
 				class='using-examples_list__item'
-				v-for='(item, index) in usingExamples'
+				v-for='(item, index) in visibleExamples'
 				:key='index'
 				:title='item.name'
 			>
@@ -30,10 +31,22 @@
 </template>
 
 <script setup lang='ts'>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { AppConfigs } from '../../../src/config';
 
+const props = defineProps<{
+	/** 标题 */
+	title?: string;
+	/** 最多展示的数量（不传则展示全部） */
+	limit?: number;
+}>();
+
 const usingExamples = ref([]);
+
+const limited = computed(() => !!props.limit && usingExamples.value.length > props.limit);
+const visibleExamples = computed(() =>
+	props.limit ? usingExamples.value.slice(0, props.limit) : usingExamples.value
+);
 
 const getExamples = () => {
 	fetch(AppConfigs.getStaticBaseUrl() + `/data/examples.json?t=${Date.now()}`).then((res) => res.json()).then((res) => {
@@ -157,9 +170,9 @@ const handleToLink = (link: any) => {
 .btn-submit-example {
 	cursor: pointer;
 	background-color: var(--vp-button-brand-bg);
+	color: var(--vp-button-brand-text);
 	backdrop-filter: blur(6px);
 	border-radius: 36px;
-	color: #ffffff;
 	font-size: 14px;
 	padding: 6px 12px;
 	box-sizing: border-box;
@@ -172,6 +185,26 @@ const handleToLink = (link: any) => {
 	&:hover {
 		color: var(--vp-button-brand-hover);
 		background-color: var(--vp-button-brand-hover-bg);
+	}
+}
+
+.btn-all-examples {
+	cursor: pointer;
+	margin-left: 10px;
+	background-color: transparent;
+	border-radius: 36px;
+	color: var(--vp-c-brand);
+	font-size: 14px;
+	padding: 5px 12px;
+	box-sizing: border-box;
+	user-select: none;
+	text-decoration: none;
+	transition: all 0.35s ease-in-out;
+	border: 1px solid var(--vp-c-brand);
+
+	&:hover {
+		color: #05080a;
+		background-color: var(--vp-c-brand);
 	}
 }
 

@@ -92,8 +92,8 @@ watch(
 				/>
 			</svg>
 		</button>
-		<div class='glow glow--purple'></div>
-		<div class='glow glow--blue'></div>
+		<div class='glow glow--lime'></div>
+		<div class='glow glow--green'></div>
 	</div>
 </template>
 
@@ -141,7 +141,7 @@ html.banner-show .banner {
 	display: flex;
 }
 
-.glow.glow--purple {
+.glow.glow--lime {
 	position: absolute;
 	bottom: -15%;
 	left: -75%;
@@ -149,13 +149,13 @@ html.banner-show .banner {
 	aspect-ratio: 1.5;
 	pointer-events: none;
 	border-radius: 100%;
-	background: linear-gradient(270deg, #7a23a1, #715ebde6 60% 80%, #bd34fe00);
+	background: linear-gradient(270deg, #c6f91f, #a3e635e6 60% 80%, #c6f91f00);
 	filter: blur(15vw);
 	transform: none;
-	opacity: 0.6;
+	opacity: 0.5;
 }
 
-.glow.glow--blue {
+.glow.glow--green {
 	position: absolute;
 	bottom: -15%;
 	right: -40%;
@@ -163,10 +163,10 @@ html.banner-show .banner {
 	aspect-ratio: 1.5;
 	pointer-events: none;
 	border-radius: 100%;
-	background: linear-gradient(180deg, #61d9ff, #0000);
+	background: linear-gradient(180deg, #2b9939, #0000);
 	filter: blur(15vw);
 	transform: none;
-	opacity: 0.3;
+	opacity: 0.4;
 }
 
 button {
@@ -218,7 +218,7 @@ button:hover .close {
 
 .vt-banner-title {
 	display: inline-block;
-	background: linear-gradient(90deg, #bd34fe 0%, #41d1ff 100%);
+	background: linear-gradient(90deg, #c6f91f 0%, #2b9939 100%);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -234,7 +234,7 @@ button:hover .close {
 .vt-primary-action {
 	display: inline-block;
 	background: var(--vp-c-brand-1);
-	color: #fff;
+	color: #05080a;
 	padding: 6px 12px;
 	border-radius: 6px;
 	font-size: 16px;
@@ -254,13 +254,13 @@ button:hover .close {
 		padding: 0 60px 0 20px;
 	}
 
-	.glow.glow--blue {
+	.glow.glow--green {
 		top: -15%;
 		right: -40%;
 		width: 80%;
 	}
 
-	.glow.glow--purple {
+	.glow.glow--lime {
 		bottom: -15%;
 		left: -40%;
 		width: 80%;

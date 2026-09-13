@@ -3,28 +3,50 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-c-brand: #409eff;
-  --vp-c-brand-light: #69b9ff;
-  --vp-c-brand-lighter: #91cfff;
-  --vp-c-brand-dark: #2b7cd9;
-  --vp-c-brand-darker: #1b5db3;
-  --vp-c-brand-dimm: rgba(64, 158, 255, 0.078);
+	/* 品牌主色：与官网 uni-halo-website 保持一致（柠檬绿 #C6F91F） */
+	--vp-c-brand: #c6f91f;
+
+	/* VitePress 组件实际使用的品牌色阶（按钮/链接/侧栏高亮等） */
+	/* 浅色模式下使用加深色阶，保证浅色背景上的可读性 */
+	--vp-c-brand-1: #65a30d;
+	--vp-c-brand-2: #4d7c0f;
+	--vp-c-brand-3: #3f6212;
+	--vp-c-brand-soft: rgba(198, 249, 31, 0.16);
+
+	/* 官网同款亮色（用于按钮底色、徽标等大面积色块） */
+	--vp-c-brand-lime: #c6f91f;
+	--vp-c-brand-lime-dark: #2b9939;
+
+	/* 旧版变量名映射（兼容自定义样式引用） */
+	--vp-c-brand-light: #a3e635;
+	--vp-c-brand-lighter: #d7fb54;
+	--vp-c-brand-dark: #4d7c0f;
+	--vp-c-brand-darker: #3f6212;
+	--vp-c-brand-dimm: rgba(198, 249, 31, 0.078);
+}
+
+.dark {
+	--vp-c-brand-1: #c6f91f;
+	--vp-c-brand-2: #d7fb54;
+	--vp-c-brand-3: #a3e635;
+	--vp-c-brand-soft: rgba(198, 249, 31, 0.14);
 }
 
 /**
  * Component: Button
  * -------------------------------------------------------------------------- */
 
+/* 官网风格：柠檬绿底 + 深色文字 */
 :root {
-  --vp-button-brand-border: var(--vp-c-brand-light);
-  --vp-button-brand-text: var(--vp-c-text-dark-1);
-  --vp-button-brand-bg: var(--vp-c-brand);
-  --vp-button-brand-hover-border: var(--vp-c-brand-light);
-  --vp-button-brand-hover-text: var(--vp-c-text-dark-1);
-  --vp-button-brand-hover-bg: var(--vp-c-brand-light);
-  --vp-button-brand-active-border: var(--vp-c-brand-light);
-  --vp-button-brand-active-text: var(--vp-c-text-dark-1);
-  --vp-button-brand-active-bg: var(--vp-button-brand-bg);
+	--vp-button-brand-border: transparent;
+	--vp-button-brand-text: #05080a;
+	--vp-button-brand-bg: var(--vp-c-brand-lime);
+	--vp-button-brand-hover-border: transparent;
+	--vp-button-brand-hover-text: #05080a;
+	--vp-button-brand-hover-bg: var(--vp-c-brand-light);
+	--vp-button-brand-active-border: transparent;
+	--vp-button-brand-active-text: #05080a;
+	--vp-button-brand-active-bg: var(--vp-c-brand-lighter);
 }
 
 /**
@@ -32,15 +54,15 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-custom-block-tip-border: var(--vp-c-brand);
-  --vp-custom-block-tip-text: var(--vp-c-brand-darker);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+	--vp-custom-block-tip-border: var(--vp-c-brand);
+	--vp-custom-block-tip-text: var(--vp-c-brand-darker);
+	--vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
 }
 
 .dark {
-  --vp-custom-block-tip-border: var(--vp-c-brand);
-  --vp-custom-block-tip-text: var(--vp-c-brand-lighter);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+	--vp-custom-block-tip-border: var(--vp-c-brand);
+	--vp-custom-block-tip-text: var(--vp-c-brand-lighter);
+	--vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
 }
 
 /**
@@ -48,7 +70,7 @@
  * -------------------------------------------------------------------------- */
 
 .DocSearch {
-  --docsearch-primary-color: var(--vp-c-brand) !important;
+	--docsearch-primary-color: var(--vp-c-brand) !important;
 }
 
 
@@ -58,32 +80,32 @@
 
 
 :root {
-	/* hero标题渐变色 */
+	/* hero标题渐变色：柠檬绿 → 绿色（官网同款配色） */
 	--vp-home-hero-name-color: transparent;
 	--vp-home-hero-name-background: -webkit-linear-gradient(
 		120deg,
-		#bd34fe,
-		#41d1ff
+		#c6f91f,
+		#2b9939
 	);
 
 	/*hero logo背景渐变色 */
 	--vp-home-hero-image-background-image: linear-gradient(
 		-45deg,
-		#bd34fe 50%,
-		#47caff 50%
+		#c6f91f 50%,
+		#2b9939 50%
 	);
 	--vp-home-hero-image-filter: blur(40px);
 
 	--c-background-image: linear-gradient(
 		-45deg,
-		#bd34fe 50%,
-		#47caff 50%
+		#c6f91f 50%,
+		#2b9939 50%
 	);
 }
 
 
 h1 {
-	background: -webkit-linear-gradient(10deg, #bd34fe 5%, #e43498 15%);
+	background: -webkit-linear-gradient(10deg, #c6f91f 5%, #2b9939 45%);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;

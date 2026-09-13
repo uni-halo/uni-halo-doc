@@ -15,7 +15,7 @@
 	<a href="https://www.xiaoxiaomo.cn">作者主页</a>
 	<a href="https://blog.xiaoxiaomo.cn">作者博客</a>
 	<a href="https://uni-halo.ialley.cn">官网主页</a>
-	<a href="https://uni-halo.ialley.cn/doc">官方文档</a>
+	<a href="https://uni-halo-doc.ialley.cn">官方文档</a>
 	<a href="https://github.com/uni-halo/uni-halo">仓库地址</a>
 </p>
 

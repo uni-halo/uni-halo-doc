@@ -72,9 +72,9 @@ const calcButtonStyle = computed(() => {
 }
 
 .xiao-button.primary {
-	color: #fff;
-	background-color: #409eff;
-	border-color: #409eff;
+	color: var(--vp-button-brand-text, #05080a);
+	background-color: var(--vp-button-brand-bg, #c6f91f);
+	border-color: var(--vp-button-brand-bg, #c6f91f);
 }
 
 .xiao-button.success {

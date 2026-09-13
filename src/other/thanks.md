@@ -14,17 +14,23 @@
 <br/><br/>
 同时拥有上万的开发者、数百万应用、上亿手机端月活用户、数千款 uni-app 插件、70+微信/qq 群。
 
-## tm-vuetify
+## wot-ui
 
-[tm-vuetify](https://www.jx2d.cn/)，是一个为 `uni-app` 平台定制的颜值也非常高的 UI 框架。
+[wot-ui](https://wot-ui.cn/)，uniapp 生态中 UI 非常美观的组件库，组件设计精致、文档完善，是本项目的 UI 基石。
 <br/><br/>
-tm-vuetify 作者：我用过很多很多框架，每个框架都有它的好处和不到之处。 光看名称 tm-vuetify 没错。就是受到它的 vuetifyjs 启发。基本可以做到无 css 代码就能写出一个应用。 因此我把它的思想带到了 uni-app 来，把效率和颜值放在了首位。
-<br/><br/>
-为什么选择？因为它如同 UNI-APP，快捷、方便、效率、开箱即用的。会长期进行更新功能。
+为什么选择？因为它如同 uni-app 一样快捷、方便、效率、开箱即用，并且在持续活跃地更新。
+
+## unibest
+
+[unibest](https://unibest.tech/)，最好的 uniapp 框架，集成了工程化、类型安全、规范化的最佳实践，本项目基于该脚手架搭建。
+
+## alova
+
+[alova](https://alova.js.org/zh-CN/)，轻量级的请求策略库，配合 uniapp 适配器为项目提供了优雅的请求层方案。
 
 ## mp-html
 
-[mp-html](https://jin-yufeng.gitee.io/mp-html/#/)，一个强大的小程序富文本组件。
+[mp-html](https://github.com/jin-yufeng/mp-html)，一个强大的小程序富文本组件。
 <br/>
 具有以下特性：
 

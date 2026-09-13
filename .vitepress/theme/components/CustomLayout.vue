@@ -468,7 +468,7 @@ const handleConformValidKnowTokenDialog = () => {
 .item-title {
 	position: relative;
 	padding-left: 12px;
-	color: #85b8f6;
+	color: var(--vp-c-brand-1);
 	font-weight: bold;
 }
 
@@ -480,7 +480,7 @@ const handleConformValidKnowTokenDialog = () => {
 	left: 0px;
 	top: 50%;
 	transform: translateY(-50%);
-	background-color: #85b8f6;
+	background-color: var(--vp-c-brand-1);
 	border-radius: 3px;
 }
 

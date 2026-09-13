@@ -11,12 +11,12 @@ export const AppConfigs = {
 		}
 	},
 	/**
-	 * 获取静态资源的地址
+	 * 获取静态资源的地址（JSON 数据等托管在 uni-halo-static 仓库的 docs 目录）
 	 * */
 	getStaticBaseUrl() {
 		if (import.meta.env.DEV) {
 			return '';
 		}
-		return 'https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-doc/src/public'
+		return 'https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/docs'
 	}
 };

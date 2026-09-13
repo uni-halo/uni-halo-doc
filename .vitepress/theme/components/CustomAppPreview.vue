@@ -74,7 +74,7 @@ function handleShowConfetti(event: any) {
 	backdrop-filter: blur(6px);
 	writing-mode: vertical-rl;
 	border-radius: 6px 0 0 6px;
-	color: #ffffff;
+	color: var(--vp-button-brand-text, #05080a);
 	font-size: 14px;
 	padding: 36px 3px;
 	box-sizing: border-box;

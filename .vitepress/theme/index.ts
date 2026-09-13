@@ -14,6 +14,7 @@ import CustomDialog from './components/CustomDialog.vue';
 import CustomFriendLinks from './components/CustomFriendLinks.vue';
 import CustomTeams from './components/CustomTeams.vue';
 import CustomAppTopBanner from './components/CustomAppTopBanner.vue';
+import StartSteps from './components/StartSteps.vue';
 
 import { NolebaseGitChangelogPlugin } from '@nolebase/vitepress-plugin-git-changelog/client';
 import '@nolebase/vitepress-plugin-git-changelog/client/style.css';
@@ -44,6 +45,7 @@ const theme: ThemeConfig = {
 	},
 	enhanceApp({ app }) {
 		app.component('CustomAppTopBanner', CustomAppTopBanner);
+		app.component('StartSteps', StartSteps);
 		app.component('CustomFooter', CustomFooter);
 		app.component('CustomUsingExamples', CustomUsingExamples);
 		app.component('CustomIframe', CustomIframe);
@@ -82,10 +84,9 @@ const theme: ThemeConfig = {
 			{
 				frontmatter, route
 			},
-			//默认值为true，表示已启用，此参数可以忽略；
-			//如果为false，则表示未启用
-			//您可以使用“comment:true”序言在页面上单独启用它
-			true
+			//默认值为false，表示未启用（giscus GitHub App 未安装在仓库上时会报错）
+			//需要启用时，可在页面序言中使用“comment:true”单独开启
+			false
 		);
 	},
 };

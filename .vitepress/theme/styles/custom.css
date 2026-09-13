@@ -1,6 +1,6 @@
 :root {
-	--c-brand: #409eff;
-	--c-brand-light: #65b1fd;
+	--c-brand: var(--vp-c-brand);
+	--c-brand-light: var(--vp-c-brand-light);
 }
 
 .custom-block.tip {

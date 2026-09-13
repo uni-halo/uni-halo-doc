@@ -5,12 +5,11 @@ import { GitChangelog, GitChangelogMarkdownSection } from '@nolebase/vitepress-p
 import { InlineLinkPreviewElementTransform } from '@nolebase/vitepress-plugin-inline-link-preview/markdown-it';
 
 export default defineConfig({
-	base:'/docs/',
+	base: '/',
 	vite: {
 		plugins: [
 			GitChangelog({
-				// 填写在此处填写您的仓库链接
-				repoURL: () => 'https://github.com/nolebase/integrations'
+				repoURL: () => 'https://github.com/uni-halo/uni-halo-doc'
 			}),
 			GitChangelogMarkdownSection()
 		],
@@ -24,7 +23,6 @@ export default defineConfig({
 		},
 		ssr: {
 			noExternal: [
-				// 如果还有别的依赖需要添加的话，并排填写和配置到这里即可
 				'@nolebase/vitepress-plugin-inline-link-preview',
 				'@nolebase/vitepress-plugin-enhanced-readabilities',
 				'@nolebase/ui'
@@ -33,9 +31,9 @@ export default defineConfig({
 	},
 	lang: 'zh-CN',
 	appearance: 'dark',
-	title: 'uni-halo',
+	title: 'UniHalo',
 	description:
-		'一个优雅、清新、漂亮的移动端博客应用，基于 uniapp + halo2.x API 实现一款现代化的开源博客 / CMS 系统API开发的多端应用。uni-halo小程序、uni-halo微信小程序、uni-halo博客小程序、halo小程序、halo博客小程序、halo微信小程序。',
+		'一个优雅、清新、漂亮的移动端博客应用，基于 uni-app + Halo 2.x API 实现一款现代化的开源博客 / CMS 多端应用。uni-halo 小程序、uni-halo 微信小程序、uni-halo 博客小程序、Halo 小程序、Halo 博客小程序、Halo 微信小程序。',
 	head: [
 		['meta', { name: 'author', content: '小莫唐尼' }],
 		[
@@ -43,7 +41,7 @@ export default defineConfig({
 			{
 				name: 'keywords',
 				content:
-					'uniapp, 小莫唐尼, halo, vue, uni-halo, uni-halo docs, uni-halo小程序, uni-app,halo开源博客,多端应用,uni-halo小程序,uni-halo微信小程序,uni-halo博客小程序,halo小程序,halo博客小程序,halo微信小程序。'
+					'uniapp, 小莫唐尼, halo, vue, uni-halo, uni-halo docs, uni-halo小程序, uni-app, halo开源博客, 多端应用, uni-halo小程序, uni-halo微信小程序, uni-halo博客小程序, halo小程序, halo博客小程序, halo微信小程序'
 			}
 		],
 		['link', { rel: 'icon', type: 'image', href: '/logo.png' }],
@@ -128,10 +126,6 @@ export default defineConfig({
 	srcDir: `${path.resolve(process.cwd())}/src`,
 	themeConfig: {
 		logo: '/logo.png',
-		// editLink: {
-		// 	text: '为此页提供修改建议',
-		// 	pattern: 'https://github.com/uni-halo/uni-halo-doc/tree/main/:path'
-		// },
 		socialLinks: [
 			{
 				icon: 'github',
@@ -168,32 +162,8 @@ export default defineConfig({
 						}
 					}
 				}
-				// locales: {
-				// 	zh: {
-				// 		translations: {
-				// 			button: {
-				// 				buttonText: "搜索文档",
-				// 				buttonAriaLabel: "搜索文档",
-				// 			},
-				// 			modal: {
-				// 				noResultsText: "无法找到相关结果",
-				// 				resetButtonTitle: "清除查询条件",
-				// 				footer: {
-				// 					selectText: "选择",
-				// 					navigateText: "切换",
-				// 				},
-				// 			},
-				// 		},
-				// 	},
-				// },
 			}
 		},
-
-		// algolia: {
-		//   appId: 'Y93HSGWS5S',
-		//   apiKey: '55af29e9571ea6fe09352c04fdc309e9',
-		//   indexName: 'ialley-workshop'
-		// },
 		footer: {
 			message: '根据 AGPL-3.0 协议开源·请遵循协议',
 			copyright:
@@ -201,83 +171,169 @@ export default defineConfig({
 		},
 		nav: [
 			{
-				text: '🔥Halo & 1Panel 专业版优惠',
+				text: '🔥 专业版优惠',
 				link: 'https://www.lxware.cn/?code=HJfS5bBK'
 			},
 			{
-				text: '部署指南',
-				link: '/deploy/intro',
-				activeMatch: '/deploy/'
-			},
-			{
-				text: '设计指南',
-				link: '/design/intro',
-				activeMatch: '/design/'
-			},
-			{
-				text: '常见问题',
-				link: '/problem/questions',
-				activeMatch: '/questions/'
-			},
-			{
-				text: '友情链接',
-				link: '/links/friend-links',
-				activeMatch: '/friend-links/'
-			},
-			{
-				text: '相关链接',
+				text: '文档',
 				items: [
 					{
-						text: '作者主页',
-						link: 'https://www.xiaoxiaomo.cn/'
+						text: '快速开始',
+						items: [
+							{
+								text: '项目介绍',
+								link: '/guide/introduction'
+							},
+							{
+								text: '技术栈',
+								link: '/guide/tech-stack'
+							},
+							{
+								text: '目录结构',
+								link: '/guide/structure'
+							},
+							{
+								text: '常见问题',
+								link: '/guide/faq'
+							}
+						]
 					},
 					{
-						text: '作者博客',
-						link: 'https://blog.xiaoxiaomo.cn'
+						text: '部署指南',
+						items: [
+							{
+								text: '部署须知',
+								link: '/deploy/intro'
+							},
+							{
+								text: '插件配置',
+								link: '/deploy/config'
+							},
+							{
+								text: '应用配置',
+								link: '/deploy/app-config'
+							},
+							{
+								text: '本地运行',
+								link: '/deploy/run'
+							},
+							{
+								text: '发布小程序',
+								link: '/deploy/wx-release'
+							},
+							{
+								text: '发布 APP',
+								link: '/deploy/app-release'
+							},
+							{
+								text: '完整流程',
+								link: '/deploy/full-content'
+							}
+						]
 					},
 					{
-						text: '配置插件',
-						link: 'https://github.com/uni-halo/uni-halo-plugin'
-					},
-					{
-						text: '源码仓库',
-						link: 'https://github.com/uni-halo/uni-halo'
-					},
-					{
-						text: '应用市场',
-						link: 'https://www.halo.run/store/apps/app-ryemX'
+						text: '插件指南',
+						items: [
+							{
+								text: '插件介绍',
+								link: '/plugin/intro'
+							},
+							{
+								text: '控制台功能',
+								link: '/plugin/console'
+							}
+						]
 					}
 				]
 			},
 			{
-				text: '赞助打赏',
+				text: '案例',
+				items: [
+					{
+						text: '全部案例',
+						link: '/examples/'
+					},
+					{
+						text: '界面预览',
+						link: '/design/pages'
+					},
+					{
+						text: '视频介绍',
+						link: '/design/video'
+					},
+					{
+						text: '更新日志',
+						link: '/update/update'
+					},
+					{
+						text: '友情链接',
+						link: '/links/friend-links'
+					}
+				]
+			},
+			{
+				text: '社区',
+				items: [
+					{
+						text: '贡献指南',
+						link: '/contributor/index'
+					},
+					{
+						text: '相关链接',
+						items: [
+							{
+								text: '项目官网',
+								link: 'https://uni-halo.ialley.cn/'
+							},
+							{
+								text: '源码仓库',
+								link: 'https://github.com/uni-halo/uni-halo'
+							},
+							{
+								text: '配置插件',
+								link: 'https://github.com/uni-halo/uni-halo-plugin'
+							},
+							{
+								text: '应用市场',
+								link: 'https://www.halo.run/store/apps/app-ryemX'
+							},
+							{
+								text: '作者主页',
+								link: 'https://www.xiaoxiaomo.cn/'
+							},
+							{
+								text: '作者博客',
+								link: 'https://blog.xiaoxiaomo.cn'
+							}
+						]
+					}
+				]
+			},
+			{
+				text: '赞助',
 				link: '/other/donate'
 			}
 		],
 		sidebar: {
-			'/design/': [
+			'/guide/': [
 				{
-					text: '设计指南',
+					text: '快速开始',
 					items: [
 						{
 							text: '项目介绍',
-							link: '/design/intro'
+							link: '/guide/introduction'
 						},
 						{
-							text: '目录说明',
-							link: '/design/folder'
+							text: '技术栈',
+							link: '/guide/tech-stack'
 						},
 						{
-							text: '相关技术',
-							link: '/design/technology'
+							text: '目录结构',
+							link: '/guide/structure'
 						},
 						{
-							text: '界面预览',
-							link: '/design/pages'
-						},
-						{
-							text: '视频介绍',
-							link: '/design/video'
+							text: '常见问题',
+							link: '/guide/faq'
 						}
 					]
 				}
@@ -291,29 +347,63 @@ export default defineConfig({
 							link: '/deploy/intro'
 						},
 						{
+							text: '准备工作',
+							link: '/deploy/preparation'
+						},
+						{
 							text: '插件配置',
 							link: '/deploy/config'
 						},
 						{
-							text: '准备工作',
-							link: '/deploy/preparation'
+							text: '应用配置',
+							link: '/deploy/app-config'
+						},
+						{
+							text: '本地运行',
+							link: '/deploy/run'
 						},
 						{
 							text: '发布小程序',
 							link: '/deploy/wx-release'
 						},
 						{
-							text: '完全流程',
+							text: '发布 APP',
+							link: '/deploy/app-release'
+						},
+						{
+							text: '完整流程',
 							link: '/deploy/full-content'
 						}
-						// {
-						// 	text: '应用发布（APP）',
-						// 	link: '/deploy/app-release'
-						// },
-						// {
-						// 	text: '应用更新',
-						// 	link: '/deploy/app-update'
-						// }
+					]
+				}
+			],
+			'/plugin/': [
+				{
+					text: '插件指南',
+					items: [
+						{
+							text: '插件介绍',
+							link: '/plugin/intro'
+						},
+						{
+							text: '控制台功能',
+							link: '/plugin/console'
+						}
+					]
+				}
+			],
+			'/design/': [
+				{
+					text: '设计指南',
+					items: [
+						{
+							text: '界面预览',
+							link: '/design/pages'
+						},
+						{
+							text: '视频介绍',
+							link: '/design/video'
+						}
 					]
 				}
 			],
@@ -353,17 +443,6 @@ export default defineConfig({
 						}
 					]
 				}
-			],
-			'/problem': [
-				{
-					text: '常见问题',
-					items: [
-						{
-							text: '常见问题',
-							link: '/problem/questions'
-						}
-					]
-				}
 			]
 		},
 		outlineTitle: '内容目录',
@@ -372,13 +451,6 @@ export default defineConfig({
 			next: '下一篇'
 		}
 	},
-	// ,vue: {
-	//   template: {
-	//     compilerOptions: {
-	//       isCustomElement: tag => tag.startsWith('Custom')
-	//     }
-	//   }
-	// }
 	markdown: {
 		//行号显示
 		lineNumbers: true,
