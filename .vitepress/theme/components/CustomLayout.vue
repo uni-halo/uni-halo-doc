@@ -73,8 +73,9 @@
 												<XiaoButton size='mini' type='primary' title='点击查看详情'></XiaoButton>
 											</a>
 										</div>
-										<img :alt='ad.title' class='recommend-app-cover ad' :style='{
-											width:"100%",height:ad.coverHeight,
+										<!--	图片宽度自适应、高度按固有比例，不裁剪；coverMaxHeight 为可选的高度上限兜底	-->
+										<img :alt='ad.title' class='recommend-app-poster ad' :style='{
+											maxHeight:ad.coverMaxHeight,
 										}' :src='ad.cover' data-fancybox='gallery' />
 									</div>
 								</div>
@@ -605,8 +606,11 @@ const handleConformValidKnowTokenDialog = () => {
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
+	/* 限定内容宽度：否则长文本会把弹窗在宽屏上无限撑开，宽度 100% 的图片随之被拉成超宽横条而被裁掉上下 */
+	max-width: 680px;
 
 	&-item {
+		box-sizing: border-box;
 		display: flex;
 		align-items: center;
 		gap: 0 12px;
@@ -626,11 +630,24 @@ const handleConformValidKnowTokenDialog = () => {
 		}
 	}
 
+	/* 小图（types 含 text-image）：宽度固定，高度交给图片固有比例，contain 兜底 → 任何比例都不裁剪 */
 	&-cover {
+		flex: 0 0 auto;
+		display: block;
 		width: 120px;
-		height: 120px;
+		height: auto;
+		max-height: 160px;
 		border-radius: 6px;
-		object-fit: cover;
+		object-fit: contain;
+	}
+
+	/* 大图（types 含 image）：宽度撑满内容区，高度按图片固有比例 → 完整展示；可用 coverMaxHeight 设高度上限 */
+	&-poster {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 6px;
+		object-fit: contain;
 	}
 
 	&-text {
@@ -639,6 +656,28 @@ const handleConformValidKnowTokenDialog = () => {
 		font-size: 14px;
 
 		p + p {
+			margin-top: 12px;
+		}
+	}
+}
+
+/* 窄屏：图文改为上下排布，避免固定宽度的小图把正文挤成细长条 */
+@media screen and (max-width: 640px) {
+	.recommend-app {
+		&-item {
+			flex-direction: column;
+			align-items: stretch;
+			padding: 16px;
+		}
+
+		&-cover {
+			width: 96px;
+			max-height: 96px;
+			margin: 0 auto;
+		}
+
+		&-text {
+			padding-left: 0;
 			margin-top: 12px;
 		}
 	}
