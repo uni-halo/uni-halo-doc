@@ -6,4 +6,4 @@
 
 ## 提交案例
 
-如果你也在使用 uni-halo，欢迎到 [Github Issues #23](https://github.com/uni-halo/uni-halo/issues/23) 提交你的站点，我们会尽快收录。
+如果你也在使用 uni-halo，欢迎到 [Github Issues #1](https://github.com/uni-halo/uni-halo/issues/1) 提交你的站点，我们会尽快收录。

@@ -83,9 +83,10 @@ function handleToggleVisible() {
 	max-height: 80vh;
 	box-sizing: border-box;
 	border-radius: 16px;
+	/* 主题色浅色光晕阴影 */
 	box-shadow:
-		0 8px 32px rgba(0, 0, 0, 0.16),
-		0 2px 8px rgba(0, 0, 0, 0.1);
+		0 8px 32px rgba(198, 249, 31, 0.22),
+		0 2px 12px rgba(198, 249, 31, 0.14);
 }
 
 .donate-dialog.visible {
@@ -98,14 +99,6 @@ function handleToggleVisible() {
 	padding: 16px;
 	box-sizing: border-box;
 	background-color: var(--vp-c-bg);
-}
-
-/* 暗色模式阴影 */
-.dark .donate-dialog {
-	box-shadow:
-		0 8px 32px rgba(0, 0, 0, 0.55),
-		0 2px 8px rgba(0, 0, 0, 0.4);
-	border-color: var(--vp-c-bg-soft);
 }
 
 .donate-tip {

@@ -90,6 +90,12 @@
 	border-radius: 3px;
 }
 
+/* 左上角标题：主题色 + 加粗 */
+.VPNavBarTitle .title {
+	color: var(--vp-c-brand-1);
+	font-weight: 700;
+}
+
 /* 首页 features 卡片：图标使用语义化深色底（色彩取自 uni-halo 主题色板） */
 .VPFeature .icon {
 	display: inline-flex;
@@ -103,57 +109,35 @@
 }
 
 /* 1 插件配置：neo-blue */
-.VPFeature:nth-child(6n + 1) .icon {
+.VPFeatures .items > .item:nth-child(6n + 1) .icon {
 	background: #4d8bff;
 }
 
 /* 2 多端编译：neo-green */
-.VPFeature:nth-child(6n + 2) .icon {
+.VPFeatures .items > .item:nth-child(6n + 2) .icon {
 	background: #00d1ff;
 }
 
 /* 3 恋爱日记：love（主程序恋爱日记主题色） */
-.VPFeature:nth-child(6n + 3) .icon {
+.VPFeatures .items > .item:nth-child(6n + 3) .icon {
 	background: #f83856;
 }
 
 /* 4 精美界面：primary（wot-ui 主题柠檬绿） */
-.VPFeature:nth-child(6n + 4) .icon {
+.VPFeatures .items > .item:nth-child(6n + 4) .icon {
 	background: #b9e424;
 	color: #05080a;
 }
 
 /* 5 免费开源：secondary */
-.VPFeature:nth-child(6n + 5) .icon {
+.VPFeatures .items > .item:nth-child(6n + 5) .icon {
 	background: #d7f94c;
 	color: #05080a;
 }
 
 /* 6 开发技术：violet */
-.VPFeature:nth-child(6n + 6) .icon {
+.VPFeatures .items > .item:nth-child(6n + 6) .icon {
 	background: #8b7cf6;
-}
-
-/* 顶部标题：UniHalo + 官网风格版本号徽标（边框 + 浅色背景，参考 uni-halo-website） */
-.VPNavBarTitle .title {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	font-weight: 700;
-	letter-spacing: -0.02em;
-}
-
-.VPNavBarTitle .title::after {
-	content: 'v3.x';
-	flex-shrink: 0;
-	font-size: 10px;
-	font-weight: 500;
-	line-height: 1;
-	padding: 4px 6px;
-	border-radius: 6px;
-	background: rgba(198, 249, 31, 0.1);
-	color: #c6f91f;
-	border: 1px solid rgba(198, 249, 31, 0.15);
 }
 
 .VPHome {

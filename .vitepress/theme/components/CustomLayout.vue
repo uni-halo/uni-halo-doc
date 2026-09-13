@@ -622,16 +622,16 @@ const handleConformValidKnowTokenDialog = () => {
 }
 
 .app-version {
-	height: 20px;
-	display: inline-flex;
-	align-items: center;
-	color: var(--vp-c-brand);
+	margin-left:6px;
+	flex-shrink: 0;
 	font-size: 10px;
-	margin-left: 4px;
-	background-color: azure;
-	padding: 0 4px;
-	border-radius: 4px;
-	font-weight: 700;
+	font-weight: 500;
+	line-height: 1;
+	padding: 4px 6px;
+	border-radius: 6px;
+	background: rgba(198, 249, 31, 0.1);
+	color: #c6f91f;
+	border: 1px solid rgba(198, 249, 31, 0.15);
 }
 
 
