@@ -103,9 +103,18 @@
 	justify-content: center;
 	width: 48px;
 	height: 48px;
+	padding: 10px;
+	box-sizing: border-box;
 	border-radius: 12px;
 	font-size: 24px !important;
 	color: #ffffff;
+}
+
+/* SVG 图标尺寸：小于容器，与彩色底留出间距 */
+.VPFeature .icon img {
+	width: 28px;
+	height: 28px;
+	object-fit: contain;
 }
 
 /* 1 插件配置：neo-blue */

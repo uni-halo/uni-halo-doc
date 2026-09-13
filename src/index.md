@@ -23,22 +23,22 @@ hero:
       link: https://github.com/uni-halo/uni-halo
 
 features:
-  - icon: 🧩
+  - icon: { src: /icons/puzzle.svg, wrap: true }
     title: 插件配置
     details: 后台动态配置，改内容不改代码
-  - icon: 📦
+  - icon: { src: /icons/boxes.svg, wrap: true }
     title: 多端编译
     details: 一套源码，小程序 / APP / H5
-  - icon: 💞
+  - icon: { src: /icons/heart.svg, wrap: true }
     title: 恋爱日记
     details: 特色功能，相册 / 清单 / 故事
-  - icon: 🎨
+  - icon: { src: /icons/palette.svg, wrap: true }
     title: 精美界面
     details: wot-ui + UnoCSS，好看又好改
-  - icon: 🔑
+  - icon: { src: /icons/key-round.svg, wrap: true }
     title: 免费开源
     details: 应用与插件全部开源
-  - icon: 🚀
+  - icon: { src: /icons/code-xml.svg, wrap: true }
     title: 开发技术
     details: Vue3 + TypeScript + Vite
 ---
