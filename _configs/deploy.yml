@@ -1,0 +1,53 @@
+#name: Deploy
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  build-and-deploy:
+#    # 服务器环境：最新版 Ubuntu
+#    runs-on: ubuntu-latest
+#    steps:
+#
+#      # 安装 pnpm
+#      - name: 安装 pnpm
+#        uses: pnpm/action-setup@v4
+#        with:
+#          version: 9
+#
+#      - name: 配置镜像源
+#        run: pnpm config set registry https://registry.npmmirror.com
+#
+#      # 拉取代码
+#      - name: 拉取代码
+#        uses: actions/checkout@v2
+#        with:
+#          persist-credentials: false
+#
+#      # 1、生成静态文件
+#      - name: 安装依赖
+#        run: pnpm install
+#
+#      - name: 构建项目
+#        run: pnpm build
+#
+#      # 2、上传到服务器
+#      - name: 上传到服务器
+#        uses: easingthemes/ssh-deploy@main
+#        with:
+#          SSH_PRIVATE_KEY: ${{ secrets.REMOTE_SSH_PRIVATE_KEY }}
+#          ARGS: "-rlgoDzvc -i --delete"
+#          # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
+#          SOURCE: ".vitepress/dist/"
+#          # 服务器域名/IP
+#          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+#          # 服务器端口
+#          REMOTE_PORT: ${{ secrets.REMOTE_HOST_PORT }}
+#          # 服务器用户名
+#          REMOTE_USER: ${{ secrets.REMOTE_USER_NAME }}
+#          # 远程服务器目录（将dist目录下的所有文件拷贝到此目录）
+#          TARGET: "/opt/1panel/apps/openresty/openresty/www/sites/uni-halo.925i.cn/index/"
+#          # 排除 node_modules 目录
+#          EXCLUDE: "/node_modules/"

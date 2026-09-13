@@ -1,0 +1,57 @@
+name: Deploy VitePress to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 指定分支
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 9
+
+      - name: 配置镜像源
+        run: pnpm config set registry https://registry.npmmirror.com
+
+      # 拉取代码（升级到 v4 版本，保留 persist-credentials 适配组织仓库）
+      - name: 拉取代码
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0 # 确保 VitePress 的 lastUpdated 功能正常
+
+      # Setup pnpm
+      - name: 配置 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: 安装依赖
+        run: pnpm install
+
+      - name: 构建项目
+        run: pnpm build
+
+      # 自动生成 CNAME，保证域名不丢失
+      - name: 生成自定义域名 CNAME 文件
+        run: echo "uni-halo.925i.cn" > ./.vitepress/dist/CNAME
+
+      # 部署到 GitHub Pages
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          # 无需手动配置密钥，使用 GitHub 内置令牌（组织仓库需开启 Actions 读写权限）
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 源目录
+          publish_dir: ./.vitepress/dist
+          # 部署到 gh-pages 分支（GitHub Pages 标准分支）
+          publish_branch: gh-pages
+          # 清除 gh-pages 分支旧文件
+          force_orphan: true
+          # 指定 git 仓库配置
+          git_config: |
+            init.defaultBranch = main
