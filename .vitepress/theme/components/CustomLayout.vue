@@ -176,6 +176,23 @@ const data = useData();
 const dialogShow = ref(false);
 const isUseVaildInput = ref(false);
 
+/* ============================================================
+ * 功能总开关
+ * 用于「关闭功能但完整保留实现代码」，需要恢复时把开关改回 true 即可。
+ * ============================================================ */
+
+/**
+ * 「重要提示」弹窗（TOKEN 泄露风险告知与确认）总开关。
+ * false = 不再弹出；模板、样式、输入校验逻辑全部保留。
+ */
+const ENABLE_VALID_KNOW_TOKEN_DIALOG = false;
+
+/**
+ * 「消息通知」（浏览器 Notify 桌面通知）总开关。
+ * false = 不再发送任何通知；notify.json 拉取、Notify 实例化等代码全部保留。
+ */
+const ENABLE_NOTIFY = false;
+
 function handleComputedDiffHour(time1: any, time2: any) {
 	const _time1 = new Date(time1).getTime();
 	const _time2 = new Date(time2).getTime();
@@ -329,6 +346,9 @@ function sleep(time: number) {
 
 function handleShowNotify() {
 
+	// 总开关关闭时直接返回（代码保留，改回 true 即可恢复通知）
+	if (!ENABLE_NOTIFY) return;
+
 	// @ts-ignore
 	if (!checkPropertyInWindow('Notify') || window.Notify == undefined) return;
 
@@ -375,6 +395,8 @@ const onValidTokenInput = () => {
 };
 
 const handleCheckShowValidKnowTokenDialog = () => {
+	// 总开关关闭时直接返回（代码保留，改回 true 即可恢复弹窗）
+	if (!ENABLE_VALID_KNOW_TOKEN_DIALOG) return;
 	if (localStorage.getItem('uni_halo_VALID_KNOW_TOKEN')) return;
 	validKnowTokenDialog.show = true;
 };
@@ -395,8 +417,9 @@ const handleConformValidKnowTokenDialog = () => {
 	localStorage.setItem('uni_halo_VALID_KNOW_TOKEN', 'visible');
 
 
+	// 总开关关闭时不发送通知（代码保留，改回 true 即可恢复）
 	// @ts-ignore
-	if (checkPropertyInWindow('Notify') && window.Notify != undefined) {
+	if (ENABLE_NOTIFY && checkPropertyInWindow('Notify') && window.Notify != undefined) {
 		nextTick(async () => {
 			// @ts-ignore
 			const notify = new Notify({
