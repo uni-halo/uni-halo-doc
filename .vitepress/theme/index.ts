@@ -71,7 +71,7 @@ const theme: ThemeConfig = {
 
 		// giscus配置
 		giscusTalk({
-				repo: 'ialley-workshop-open/uni-halo-doc', //仓库
+				repo: 'uni-halo/uni-halo-doc', //仓库
 				repoId: 'R_kgDOMTa01A', //仓库ID
 				category: 'Announcements', // 讨论分类
 				categoryId: 'DIC_kwDOMTa01M4Ckt3n', //讨论分类ID

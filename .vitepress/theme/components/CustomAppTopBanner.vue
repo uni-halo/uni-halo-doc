@@ -14,7 +14,7 @@ interface IBanner {
 const currentBanner = ref<IBanner>({
 	title: '哈喽，uni-halo 正在收集用户的使用案例，快来提交您的案例吧~',
 	action: '我要提交',
-	link: 'https://github.com/ialley-workshop-open/uni-halo/issues/23'
+	link: 'https://github.com/uni-halo/uni-halo/issues/23'
 });
 
 /**

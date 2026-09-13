@@ -5,7 +5,7 @@ import { GitChangelog, GitChangelogMarkdownSection } from '@nolebase/vitepress-p
 import { InlineLinkPreviewElementTransform } from '@nolebase/vitepress-plugin-inline-link-preview/markdown-it';
 
 export default defineConfig({
-	base:'/',
+	base:'/docs/',
 	vite: {
 		plugins: [
 			GitChangelog({
@@ -130,16 +130,16 @@ export default defineConfig({
 		logo: '/logo.png',
 		// editLink: {
 		// 	text: '为此页提供修改建议',
-		// 	pattern: 'https://github.com/ialley-workshop-open/uni-halo-doc/tree/main/:path'
+		// 	pattern: 'https://github.com/uni-halo/uni-halo-doc/tree/main/:path'
 		// },
 		socialLinks: [
 			{
 				icon: 'github',
-				link: 'https://github.com/ialley-workshop-open/uni-halo'
+				link: 'https://github.com/uni-halo/uni-halo'
 			},
 			{
 				icon: 'gitee',
-				link: 'https://gitee.com/ialley-workshop-open/uni-halo'
+				link: 'https://gitee.com/uni-halo/uni-halo'
 			},
 			{
 				icon: {
@@ -237,11 +237,11 @@ export default defineConfig({
 					},
 					{
 						text: '配置插件',
-						link: 'https://github.com/ialley-workshop-open/plugin-uni-halo'
+						link: 'https://github.com/uni-halo/uni-halo-plugin'
 					},
 					{
 						text: '源码仓库',
-						link: 'https://github.com/ialley-workshop-open/uni-halo'
+						link: 'https://github.com/uni-halo/uni-halo'
 					},
 					{
 						text: '应用市场',
@@ -394,6 +394,6 @@ export default defineConfig({
 		}
 	},
 	sitemap: {
-		hostname: 'https://uni-halo.925i.cn'
+		hostname: 'https://uni-halo.ialley.cn'
 	}
 });

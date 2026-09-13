@@ -148,7 +148,7 @@
 			<slot name='nav-screen-content-after' />
 		</template>
 		<template #nav-bar-title-after>
-			<span class='app-version'>2.0.10</span>
+			<span class='app-version'>v3.x</span>
 		</template>
 		<template #home-hero-info-after>
 			<CustomHomeStars></CustomHomeStars>
@@ -401,8 +401,8 @@ const handleConformValidKnowTokenDialog = () => {
 				title: '消息通知',
 				body: '您已知晓 TOKEN 的泄露风险,后续将不再提示，感谢您的使用',
 				enable: true,
-				badge: 'https://uni-halo.925i.cn/logo.png',
-				icon: 'https://uni-halo.925i.cn/logo.png',
+				badge: 'https://uni-halo.ialley.cn/logo.png',
+				icon: 'https://uni-halo.ialley.cn/logo.png',
 				autoClose: true,
 				sleep: 5000,
 				requireInteraction: false

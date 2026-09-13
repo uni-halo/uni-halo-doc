@@ -8,7 +8,7 @@
 
 |                                                 支付宝                                                 |                                                微信                                                 |                                                QQ                                                 |
 |:---------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------:|
-| ![支付宝赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static-resources/author/ZFBRewardCode.png) | ![微信赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static-resources/author/WXRewardCode.png) | ![QQ赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static-resources/author/QQRewardCode.png) |
+| ![支付宝赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/author/rewards/ZFBRewardCode.png) | ![微信赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/author/rewards/WXRewardCode.png) | ![QQ赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/author/rewards/QQRewardCode.png) |
 
 [//]: # ()
 [//]: # (## 赞助记录)

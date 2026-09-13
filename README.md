@@ -1,12 +1,12 @@
 <p align="center">
-    <a href="https://uni-halo.925i.cn" target="_blank" rel="noopener noreferrer">
-        <img width="100" src="https://uni-halo.925i.cn/logo.png" alt="uni-halo logo" />
+    <a href="https://uni-halo.ialley.cn" target="_blank" rel="noopener noreferrer">
+        <img width="100" src="https://uni-halo.ialley.cn/logo.png" alt="uni-halo logo" />
     </a>
 </p>
 
 <p align="center"><b style="font-size: 20px;color: #10B5FB">uni-halo 官方文档仓库</b></p>
 <br />
-<p align="center"><b>【uni-halo v2.0】</b> 基于 Halo2.X API 多端项目，值得一试。</p>
+<p align="center"><b>【uni-halo v3.x】</b> 基于 Halo2.X API 多端项目，值得一试。</p>
 <p align="center"><b style="font-size: 14px;color: #10B5FB">正式支持 Halo2.X 版本，免费开源</b></p>
 
 
@@ -14,8 +14,9 @@
 <p align="center">
 	<a href="https://www.xiaoxiaomo.cn">作者主页</a>
 	<a href="https://blog.xiaoxiaomo.cn">作者博客</a>
-	<a href="https://uni-halo.925i.cn">官方文档</a>
-	<a href="https://github.com/ialley-workshop-open/uni-halo">仓库地址</a>
+	<a href="https://uni-halo.ialley.cn">官网主页</a>
+	<a href="https://uni-halo.ialley.cn/doc">官方文档</a>
+	<a href="https://github.com/uni-halo/uni-halo">仓库地址</a>
 </p>
 
 ---
@@ -24,7 +25,7 @@
 
 |                                                 支付宝                                                 |                                                微信                                                 |                                                QQ                                                 |
 |:---------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------:|
-| ![支付宝赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static-resources/author/ZFBRewardCode.png) | ![微信赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static-resources/author/WXRewardCode.png) | ![QQ赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static-resources/author/QQRewardCode.png) |
+| ![支付宝赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/author/rewards/ZFBRewardCode.png) | ![微信赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/author/rewards/WXRewardCode.png) | ![QQ赞助](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/author/rewards/QQRewardCode.png) |
 
 ## 一、项目介绍
 
@@ -40,7 +41,7 @@
 
 |首页|分类|我的|
 |:--:|:--:|:--:|
-|![首页](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static-resources/screenshots/v2/首页.png)|![分类](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static-resources/screenshots/v2/分类.jpg)|![我的](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static-resources/screenshots/v2/关于.jpg)|
+|![首页](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v2.x/首页.png)|![分类](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v2.x/分类.jpg)|![我的](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v2.x/关于.jpg)|
 
 
 
@@ -48,7 +49,7 @@
 
 - 在 uni-halo 中，我们为您准备了一个恋爱日记的模块，您可以在其中记录您的恋爱故事，分享给您的朋友们，请扫示例小程序，在线体验恋爱日记的功能。
 
-![恋爱日记](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static-resources/screenshots/v2/恋爱日记.jpg)
+![恋爱日记](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v2.x/恋爱日记.jpg)
 
 <br/>
 
@@ -63,8 +64,8 @@
 ## 二、配套插件
 
 ### 下载地址
-- 代码仓库：[https://github.com/ialley-workshop-open/plugin-uni-halo](https://github.com/ialley-workshop-open/plugin-uni-halo)
-- 仓库版本：[https://github.com/ialley-workshop-open/plugin-uni-halo/releases](https://github.com/ialley-workshop-open/plugin-uni-halo/releases)
+- 代码仓库：[https://github.com/uni-halo/uni-halo-plugin](https://github.com/uni-halo/uni-halo-plugin)
+- 仓库版本：[https://github.com/uni-halo/uni-halo-plugin/releases](https://github.com/uni-halo/uni-halo-plugin/releases)
 - 应用市场：[https://www.halo.run/store/apps/app-ryemX](https://www.halo.run/store/apps/app-ryemX)
 
 ### 使用方式
@@ -76,17 +77,16 @@
 
 - 作者主页：[https://www.xiaoxiaomo.cn/](https://www.xiaoxiaomo.cn/)
 - 作者博客：[https://blog.xiaoxiaomo.cn/](https://blog.xiaoxiaomo.cn/)
-- 官方文档：[https://uni-halo.925i.cn/](https://uni-halo.925i.cn/)
-- 代码仓库：[https://github.com/ialley-workshop-open/uni-halo](https://github.com/ialley-workshop-open/uni-halo)
-- 插件地址：[https://github.com/ialley-workshop-open/plugin-uni-halo](https://github.com/ialley-workshop-open/uni-halo)
+- 官方文档：[https://uni-halo.ialley.cn/](https://uni-halo.ialley.cn/)
+- 代码仓库：[https://github.com/uni-halo/uni-halo](https://github.com/uni-halo/uni-halo)
+- 插件地址：[https://github.com/uni-halo/uni-halo-plugin](https://github.com/uni-halo/uni-halo)
 - 应用市场：[https://www.halo.run/store/apps/app-ryemX](https://www.halo.run/store/apps/app-ryemX)
 
 
 ## 四、使用交流
 
-- 提交 issues：[Github Issues](https://github.com/ialley-workshop-open/uni-halo/issues)
-	丨 [Gitee Issues](https://github.com/ialley-workshop-open/uni-halo/issues)
-- 微信交流群：由于微信交流群时效性太短，所以有需要的话可以先加入QQ群，再邀请进微信群
+- 提交 issues：[Github Issues](https://github.com/uni-halo/uni-halo/issues)
+	丨 [Gitee Issues](https://github.com/uni-halo/uni-halo/issues)
 - QQ 交流群：632969367
 
 ![QQ交流群](https://blog.xiaoxiaomo.cn/upload/qun.png)

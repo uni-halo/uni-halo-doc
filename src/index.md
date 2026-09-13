@@ -6,7 +6,7 @@ titleTemplate: 一个免费开源可多端编译的移动端博客源码丨微�
 
 hero:
   name: UNI-HALO
-  text: 免费开源可多端编译的博客 (v2.0)
+  text: 免费开源可多端编译的博客 (v3.x)
   tagline: 旨在：视尔唯一，心之所向丨Halo 移动端应用丨不止小程序
   image:
     src: /logo.png
@@ -20,7 +20,7 @@ hero:
       link: /design/intro
     - theme: alt
       text: Github
-      link: https://github.com/ialley-workshop-open/uni-halo
+      link: https://github.com/uni-halo/uni-halo
 
 features:
   - icon: 🆕

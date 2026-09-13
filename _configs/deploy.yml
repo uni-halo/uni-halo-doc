@@ -48,6 +48,6 @@
 #          # 服务器用户名
 #          REMOTE_USER: ${{ secrets.REMOTE_USER_NAME }}
 #          # 远程服务器目录（将dist目录下的所有文件拷贝到此目录）
-#          TARGET: "/opt/1panel/apps/openresty/openresty/www/sites/uni-halo.925i.cn/index/"
+#          TARGET: "/opt/1panel/apps/openresty/openresty/www/sites/uni-halo.ialley.cn/index/"
 #          # 排除 node_modules 目录
 #          EXCLUDE: "/node_modules/"

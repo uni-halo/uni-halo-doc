@@ -6,7 +6,7 @@
 				免费开源，以下站长都在使用
 			</p>
 			<div>
-				<a class='btn-submit-example' href='https://github.com/ialley-workshop-open/uni-halo/issues/23' target='_blank'
+				<a class='btn-submit-example' href='https://github.com/uni-halo/uni-halo/issues/23' target='_blank'
 					 title='提交我的案例'>提交我的案例</a>
 			</div>
 		</div>

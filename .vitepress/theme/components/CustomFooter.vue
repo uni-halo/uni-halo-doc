@@ -1,6 +1,6 @@
 <template>
     <div class="page-footer">
-        <h1 class="name">UNI-HALO V2.0</h1>
+        <h1 class="name">UNI-HALO v3.x</h1>
         <div class="desc">—— 视尔唯一·心之所向·素履而往 ——</div>
         <div class="desc">颜值较高的一款 Halo2.x 的小程序源码，欢迎体验</div>
         <div class="img-list">

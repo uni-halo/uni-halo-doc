@@ -84,7 +84,7 @@
 
 #### 7.1.1 Gitee
 
-仓库地址：https://gitee.com/ialley-workshop-open/uni-halo
+仓库地址：https://gitee.com/uni-halo/uni-halo
 
 ![PixPin_2025-08-15_20-55-29.png](https://blog.xiaoxiaomo.cn/upload/PixPin_2025-08-15_20-55-29.png)
 
@@ -93,7 +93,7 @@
 
 #### 7.1.2 Github
 
-仓库地址：https://github.com/ialley-workshop-open/uni-halo
+仓库地址：https://github.com/uni-halo/uni-halo
 
 ![PixPin_2025-08-15_20-57-29.png](https://blog.xiaoxiaomo.cn/upload/PixPin_2025-08-15_20-57-29.png)
 

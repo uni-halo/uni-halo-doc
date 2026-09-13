@@ -15,9 +15,9 @@
 
 - 站点名称：uni-halo
 - 站点类型：技术
-- 站点头像：https://uni-halo.925i.cn/logo.png
-- 站点截图：https://uni-halo.925i.cn/screenshot.png
-- 站点链接：https://uni-halo.925i.cn/
+- 站点头像：https://uni-halo.ialley.cn/logo.png
+- 站点截图：https://uni-halo.ialley.cn/screenshot.png
+- 站点链接：https://uni-halo.ialley.cn/
 - 站点描述：开源免费 Halo 博客小程序，支持多端编译。
 
 

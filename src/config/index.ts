@@ -7,7 +7,7 @@ export const AppConfigs = {
 		if (import.meta.env.DEV) {
 			return '';
 		} else {
-			return 'https://uni-halo.925i.cn';
+			return 'https://uni-halo.ialley.cn';
 		}
 	},
 	/**
@@ -17,6 +17,6 @@ export const AppConfigs = {
 		if (import.meta.env.DEV) {
 			return '';
 		}
-		return 'https://gcore.jsdelivr.net/gh/ialley-workshop-open/uni-halo-doc/src/public'
+		return 'https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-doc/src/public'
 	}
 };

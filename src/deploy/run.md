@@ -7,7 +7,7 @@
 
 ##### 方式1：下载发布版压缩包
 
-下载地址：[https://github.com/ialley-workshop-open/uni-halo/releases](https://github.com/ialley-workshop-open/uni-halo/releases)
+下载地址：[https://github.com/uni-halo/uni-halo/releases](https://github.com/uni-halo/uni-halo/releases)
 
 <br />
 
@@ -17,11 +17,11 @@ _请使用 `main` 分支，记得帮忙点一下`star`，然后先将仓库 `for
 ::: code-group
 
 ```bash [Github]
-git clone https://github.com/ialley-workshop-open/uni-halo.git
+git clone https://github.com/uni-halo/uni-halo.git
 ```
 
 ```bash [Gitee]
-git clone https://gitee.com/ialley-workshop-open/uni-halo.git
+git clone https://gitee.com/uni-halo/uni-halo.git
 ```
 
 :::

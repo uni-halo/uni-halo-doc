@@ -38,7 +38,7 @@ jobs:
 
       # 自动生成 CNAME，保证域名不丢失
       - name: 生成自定义域名 CNAME 文件
-        run: echo "uni-halo.925i.cn" > ./.vitepress/dist/CNAME
+        run: echo "uni-halo.ialley.cn" > ./.vitepress/dist/CNAME
 
       # 部署到 GitHub Pages
       - name: 部署到 GitHub Pages

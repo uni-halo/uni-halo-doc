@@ -6,7 +6,7 @@ export default defineConfig({
 	base: '/',
 	plugins: [
 		GitChangelog({
-			repoURL: () => 'https://github.com/ialley-workshop-open/uni-halo-doc'
+			repoURL: () => 'https://github.com/uni-halo/uni-halo-doc'
 		}),
 		GitChangelogMarkdownSection()
 	],

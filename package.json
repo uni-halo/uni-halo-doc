@@ -1,7 +1,7 @@
 {
   "name": "uni-halo-doc",
-  "version": "1.0.1",
-  "description": "uni-halo v2丨移动端博客应用说明文档",
+  "version": "3.0.0",
+  "description": "uni-halo v3.x丨移动端应用说明文档",
   "type": "module",
   "author": {
     "name": "小莫唐尼",
@@ -9,12 +9,12 @@
     "url": "https://github.com/okay-xiaomo"
   },
   "license": "MIT",
-  "homepage": "https://github.com/ialley-workshop-open/uni-halo-doc",
+  "homepage": "https://github.com/uni-halo/uni-halo-doc",
   "repository": {
-    "url": "https://github.com/ialley-workshop-open/uni-halo-doc.git"
+    "url": "https://github.com/uni-halo/uni-halo-doc.git"
   },
   "bugs": {
-    "url": "https://github.com/ialley-workshop-open/uni-halo-doc/issues"
+    "url": "https://github.com/uni-halo/uni-halo-doc/issues"
   },
   "scripts": {
     "dev": "vitepress dev",

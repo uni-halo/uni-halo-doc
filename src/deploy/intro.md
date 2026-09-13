@@ -6,7 +6,7 @@
 
 ::: tip 重要说明
 
-- uni-halo v2.0  已经支持通过插件（[UniHalo 配置](https://github.com/ialley-workshop-open/plugin-uni-halo)）配置，无需再本地配置。
+- uni-halo v3.x  已经支持通过插件（[UniHalo 配置](https://github.com/uni-halo/uni-halo-plugin)）配置，无需再本地配置。
 
 - 如果你不想分目录查看教程，点击看完整版（[完整的部署流程](full-content.md)）。
 :::
@@ -28,8 +28,8 @@
 
 ### uni-halo
 
-- uni-halo 官网：https://uni-halo.925i.cn
-- uni-halo 仓库：https://github.com/ialley-workshop-open/uni-halo
+- uni-halo 官网：https://uni-halo.ialley.cn
+- uni-halo 仓库：https://github.com/uni-halo/uni-halo
 - uni-halo 插件：https://www.halo.run/store/apps/app-ryemX
 
 
