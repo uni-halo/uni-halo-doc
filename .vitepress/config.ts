@@ -171,7 +171,7 @@ export default defineConfig({
 		},
 		nav: [
 			{
-				text: '🔥 专业版优惠',
+				text: '🔥 Halo & 1Panel 专业版优惠',
 				link: 'https://www.lxware.cn/?code=HJfS5bBK'
 			},
 			{
