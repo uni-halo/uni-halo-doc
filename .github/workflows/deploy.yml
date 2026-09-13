@@ -6,7 +6,7 @@ on:
       - main # 指定分支
   workflow_dispatch: # 支持手动触发重跑
 
-# 【关键修复】GITHUB_TOKEN 默认只有只读权限，
+# 【修复 1】GITHUB_TOKEN 默认只有只读权限，
 # 必须显式申请 contents: write 才允许向 gh-pages 分支推送。
 permissions:
   contents: write
@@ -20,27 +20,32 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      # 【修复 2】pnpm 必须 >= 10.5.0（与官网仓库一致，本地开发环境亦为 11.x）。
+      # 本仓库的 pnpm-workspace.yaml 只有 settings（allowBuilds）而没有 packages 字段，
+      # pnpm < 10.5 会把它判定为非法工作区，抛 "ERROR packages field missing or empty"；
+      # 该命令由 setup-node 的缓存探测（pnpm store path）触发，失败即整条流水线被取消。
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11
+
+      - name: 配置镜像源
+        run: pnpm config set registry https://registry.npmmirror.com
+
       # 拉取代码（persist-credentials: false 避免 checkout 的凭据覆盖部署用的 token）
       - name: 拉取代码
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: false
           fetch-depth: 0 # 确保 VitePress 的 lastUpdated 功能正常
 
-      # 安装 pnpm（只装一次；版本需与 pnpm-lock.yaml 的 lockfileVersion 9.0 对齐）
-      - name: 安装 pnpm
-        uses: pnpm/action-setup@v6
+      # 【修复 3】pin 到 v5：v4 内部跑在 Node 20 上，已被 GitHub 标记废弃，
+      # 即日志里的 "Node 20 is being deprecated" 告警；v5 起跑在 Node 24 上。
+      - name: 配置 Node.js 与 pnpm 缓存
+        uses: actions/setup-node@v5
         with:
-          version: 9
-
-      - name: 配置 Node 与 pnpm 缓存
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
-
-      - name: 配置镜像源
-        run: pnpm config set registry https://registry.npmmirror.com
 
       - name: 安装依赖
         run: pnpm install
@@ -60,5 +65,8 @@ jobs:
           publish_branch: gh-pages
           # 清除 gh-pages 分支旧文件
           force_orphan: true
-          # 自定义域名（由 action 自动写入 CNAME，替代手工 echo 步骤）
+          # 自定义域名（与仓库根目录 CNAME 保持一致，由 action 自动写入）
           cname: uni-halo-doc.ialley.cn
+          # 部署提交的作者身份
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
