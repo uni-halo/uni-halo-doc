@@ -3,6 +3,7 @@
 [uni-halo-plugin](https://github.com/uni-halo/uni-halo-plugin) 是 `uni-halo` 移动端应用的**配套配置插件**，运行在 Halo 2.x 站点上，为小程序提供后台配置管理能力。
 
 - 插件名称：Uni Halo
+- 插件 ID：`uni-halo`（Halo 控制台访问路径 `/console/plugins/uni-halo`）
 - 插件市场：https://www.halo.run/store/apps/app-ryemX
 - 源码仓库：https://github.com/uni-halo/uni-halo-plugin
 - 环境要求：Halo ≥ 2.26，Java 21+（仅开发构建时需要）
