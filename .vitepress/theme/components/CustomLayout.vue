@@ -88,6 +88,7 @@
 				</template>
 			</CustomDialog>
 			<CustomAppPreview></CustomAppPreview>
+			<DonatePreview></DonatePreview>
 			<CustomDialog v-if='validKnowTokenDialog.show' :use-close='false' :zIndex='100' title='重要提示'>
 				<template #body>
 					<div class='valid-token'>
@@ -164,6 +165,7 @@ import { checkPropertyInWindow } from '../../../src/utils';
 import { AppConfigs } from '../../../src/config';
 import XiaoButton from './ui/XiaoButton.vue';
 import CustomAppPreview from './CustomAppPreview.vue';
+import DonatePreview from './DonatePreview.vue';
 import CustomHomeStars from './CustomHomeStars.vue';
 import CustomAppTopBanner from './CustomAppTopBanner.vue';
 

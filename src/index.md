@@ -23,24 +23,24 @@ hero:
       link: https://github.com/uni-halo/uni-halo
 
 features:
-  - icon: 🆕
-    title: 流行技术
-    details: 基于 uni-app + Vue3 + TypeScript + UnoCSS + wot-ui 跨端技术栈开发
-  - icon: 🦋
-    title: 代码规范
-    details: 代码规范完善、结构清晰，易于上手二次开发
-  - icon: 🛠️
+  - icon: 🧩
     title: 插件配置
-    details: 配套 Halo 配置插件，页面内容支持后台动态配置，无需改代码
+    details: 后台动态配置，改内容不改代码
   - icon: 📦
     title: 多端编译
-    details: 一套源码实现多个应用端编译，支持微信小程序（推荐）、APP、H5 应用
-  - icon: 🔩
-    title: 舒适界面
-    details: 精心设计前端UI，更贴合用户审美
+    details: 一套源码，小程序 / APP / H5
+  - icon: 💞
+    title: 恋爱日记
+    details: 特色功能，相册 / 清单 / 故事
+  - icon: 🎨
+    title: 精美界面
+    details: wot-ui + UnoCSS，好看又好改
   - icon: 🔑
     title: 免费开源
-    details: 应用和配套插件完全免费开源，可任意修改
+    details: 应用与插件全部开源
+  - icon: 🚀
+    title: 开发技术
+    details: Vue3 + TypeScript + Vite
 ---
 
 

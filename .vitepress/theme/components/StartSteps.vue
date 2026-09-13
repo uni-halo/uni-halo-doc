@@ -1,6 +1,6 @@
 <template>
 	<div class="start-steps">
-		<h2 class="start-steps-title">🚀 三步开启你的博客之旅</h2>
+		<h2 class="start-steps-title">三步开启你的博客之旅</h2>
 		<p class="start-steps-tagline">从零开始，让 Halo 站点拥有一款精美的多端应用</p>
 		<div class="start-steps-grid">
 			<div v-for="(step, index) in steps" :key="index" class="start-step-card">
