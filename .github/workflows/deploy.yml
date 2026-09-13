@@ -4,31 +4,43 @@ on:
   push:
     branches:
       - main # 指定分支
+  workflow_dispatch: # 支持手动触发重跑
+
+# 【关键修复】GITHUB_TOKEN 默认只有只读权限，
+# 必须显式申请 contents: write 才允许向 gh-pages 分支推送。
+permissions:
+  contents: write
+
+# 同一时间只允许一个部署任务，避免并发推送互相覆盖
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 安装 pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 9
-
-      - name: 配置镜像源
-        run: pnpm config set registry https://registry.npmmirror.com
-
-      # 拉取代码（升级到 v4 版本，保留 persist-credentials 适配组织仓库）
+      # 拉取代码（persist-credentials: false 避免 checkout 的凭据覆盖部署用的 token）
       - name: 拉取代码
         uses: actions/checkout@v4
         with:
           persist-credentials: false
           fetch-depth: 0 # 确保 VitePress 的 lastUpdated 功能正常
 
-      # Setup pnpm
-      - name: 配置 Setup pnpm
-        uses: pnpm/action-setup@v4
+      # 安装 pnpm（只装一次；版本需与 pnpm-lock.yaml 的 lockfileVersion 9.0 对齐）
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v6
         with:
-          version: latest
+          version: 9
+
+      - name: 配置 Node 与 pnpm 缓存
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: 配置镜像源
+        run: pnpm config set registry https://registry.npmmirror.com
 
       - name: 安装依赖
         run: pnpm install
@@ -36,15 +48,11 @@ jobs:
       - name: 构建项目
         run: pnpm build
 
-      # 自动生成 CNAME，保证域名不丢失
-      - name: 生成自定义域名 CNAME 文件
-        run: echo "uni-halo.ialley.cn" > ./.vitepress/dist/CNAME
-
       # 部署到 GitHub Pages
       - name: 部署到 GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          # 无需手动配置密钥，使用 GitHub 内置令牌（组织仓库需开启 Actions 读写权限）
+          # 使用 GitHub 内置令牌（需上方 permissions: contents: write 配合）
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # 源目录
           publish_dir: ./.vitepress/dist
@@ -52,6 +60,5 @@ jobs:
           publish_branch: gh-pages
           # 清除 gh-pages 分支旧文件
           force_orphan: true
-          # 指定 git 仓库配置
-          git_config: |
-            init.defaultBranch = main
+          # 自定义域名（由 action 自动写入 CNAME，替代手工 echo 步骤）
+          cname: uni-halo-doc.ialley.cn
