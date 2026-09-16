@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://uni-halo.ialley.cn" target="_blank" rel="noopener noreferrer">
-        <img width="100" src="https://uni-halo.ialley.cn/logo.png" alt="uni-halo logo" />
+        <img width="100" src="https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/logo.png" alt="uni-halo logo" />
     </a>
 </p>
 
@@ -75,11 +75,12 @@
 
 ## 三、相关文档
 
+- 官网主页：[https://uni-halo.ialley.cn/](https://uni-halo.ialley.cn/)
+- 官方文档：[https://uni-halo-doc.ialley.cn/](https://uni-halo-doc.ialley.cn/)
 - 作者主页：[https://www.xiaoxiaomo.cn/](https://www.xiaoxiaomo.cn/)
 - 作者博客：[https://blog.xiaoxiaomo.cn/](https://blog.xiaoxiaomo.cn/)
-- 官方文档：[https://uni-halo.ialley.cn/](https://uni-halo.ialley.cn/)
 - 代码仓库：[https://github.com/uni-halo/uni-halo](https://github.com/uni-halo/uni-halo)
-- 插件地址：[https://github.com/uni-halo/uni-halo-plugin](https://github.com/uni-halo/uni-halo)
+- 插件地址：[https://github.com/uni-halo/uni-halo-plugin](https://github.com/uni-halo/uni-halo-plugin)
 - 应用市场：[https://www.halo.run/store/apps/app-ryemX](https://www.halo.run/store/apps/app-ryemX)
 
 
@@ -95,7 +96,7 @@
 
 ## 🎉 加入我们
 
-uni-halo 还在持续更新中，本项目欢迎您的参与，共同维护，逐步完善，将项目做得更强。项目采用 AGPL-3.0 开源协议，本着一切免费的原则，原则上不会收取任何费用及版权，可以放心使用。
+uni-halo 还在持续更新中，本项目欢迎您的参与，共同维护，逐步完善，将项目做得更强。项目采用 Apache License 2.0 开源协议，本着一切免费的原则，原则上不会收取任何费用及版权，可以放心使用。
 
 如果你想加入我们，可以多提供一些好的建议或者提交 pr，我们将会非常乐意接受您的建议和意见。
 
@@ -103,4 +104,4 @@ uni-halo 还在持续更新中，本项目欢迎您的参与，共同维护，�
 
 ## 🔍 开源许可
 
-uni-halo 使用 AGPL-3.0 协议开源，请遵守开源协议。
+uni-halo 使用 Apache License 2.0 协议开源，请遵守开源协议。

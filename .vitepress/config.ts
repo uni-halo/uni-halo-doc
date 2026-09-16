@@ -241,6 +241,18 @@ export default defineConfig({
 							{
 								text: '控制台功能',
 								link: '/plugin/console'
+							},
+							{
+								text: '移动端登录配置',
+								link: '/plugin/mobile-login'
+							},
+							{
+								text: '移动端登录接口',
+								link: '/plugin/mobile-login-api'
+							},
+							{
+								text: '恋爱日记前台模板',
+								link: '/plugin/love-template'
 							}
 						]
 					}
@@ -388,6 +400,18 @@ export default defineConfig({
 						{
 							text: '控制台功能',
 							link: '/plugin/console'
+						},
+						{
+							text: '移动端登录配置',
+							link: '/plugin/mobile-login'
+						},
+						{
+							text: '移动端登录接口',
+							link: '/plugin/mobile-login-api'
+						},
+						{
+							text: '恋爱日记前台模板',
+							link: '/plugin/love-template'
 						}
 					]
 				}
