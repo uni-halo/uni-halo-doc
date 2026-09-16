@@ -31,7 +31,10 @@ features:
     details: 一套源码，小程序 / APP / H5
   - icon: { src: /icons/heart.svg, wrap: true }
     title: 恋爱日记
-    details: 特色功能，相册 / 清单 / 故事
+    details: 特色功能，相册（密码锁定）/ 清单 / 故事，前台模板开箱即用
+  - icon: { src: /icons/user-round.svg, wrap: true }
+    title: 账号登录
+    details: 账号密码 / 微信一键登录，移动端直接管理内容
   - icon: { src: /icons/palette.svg, wrap: true }
     title: 精美界面
     details: wot-ui + UnoCSS，好看又好改
