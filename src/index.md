@@ -49,6 +49,46 @@ features:
 
 <StartSteps></StartSteps>
 
+<CustomUiPreview
+	title="界面预览"
+	subtitle="主界面 / 特色功能 / 主题模板，一览 uni-halo 的界面设计"
+	:groups="[
+		{
+			key: 'main',
+			label: '主界面',
+			items: [
+				{ name: '首页', file: '首页.png' },
+				{ name: '分类', file: '分类.png' },
+				{ name: '图库', file: '图库.png' },
+				{ name: '瞬间', file: '瞬间.png' },
+				{ name: '博主', file: '博主.png' }
+			]
+		},
+		{
+			key: 'love',
+			label: '特色功能',
+			items: [
+				{ name: '恋爱主页', file: '恋爱日记.png' },
+				{ name: '恋爱相册', file: '恋爱相册.png' },
+				{ name: '恋爱清单', file: '恋爱清单.png' },
+				{ name: '我们的故事', file: '恋爱故事.png' }
+			]
+		},
+		{
+			key: 'template',
+			label: '主题模板',
+			items: [
+				{ name: '恋爱日记主页', file: '前台模板.png', dir: 'plugin/v3.x' },
+				{ name: '恋爱相册', file: '前台模板-恋爱相册.png', dir: 'plugin/v3.x' },
+				{ name: '恋爱清单', file: '前台模板-恋爱清单.png', dir: 'plugin/v3.x' },
+				{ name: '我们的故事', file: '前台模板-恋爱故事.png', dir: 'plugin/v3.x' }
+			]
+		}
+	]"
+	footer="更多页面截图与功能演示，请访问官网或阅读下方文档。"
+>
+</CustomUiPreview>
+
 <CustomUsingExamples title="精选案例" :limit="5"></CustomUsingExamples>
 
 <CustomFooter></CustomFooter>

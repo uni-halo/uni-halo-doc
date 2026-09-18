@@ -16,7 +16,7 @@
 
 登录成功后返回一个 **Halo 原生个人访问令牌（PAT，`pat_` 前缀）**。该令牌与 Halo 后台「个人中心 → 个人令牌」创建的令牌完全同构，可直接访问 Halo 原生 API 与本插件的全部接口，无需再做一次 token 兑换。
 
-同时返回：用户摘要、角色集合、以及由角色展开的 RBAC 规则列表，供 App 端做菜单/按钮级显隐控制。
+同时返回：用户摘要、角色集合、以及按角色展开的权限规则列表，供 App 端做菜单/按钮级显隐控制。
 
 ### 设计要点
 
@@ -81,13 +81,13 @@ POST https://example.com/apis/api.unihalo.ialley.cn/v1alpha1/plugins/uni-halo/au
 
 | 方法 | 路径 | 说明 | 需要登录 |
 |---|---|---|:---:|
-| GET | `{base}/getConfigs` | 获取全部公开配置（含登录开关） | ❌ |
-| GET | `{base}/getConfigs/loginConfig` | 只获取登录配置分组 | ❌ |
-| POST | `{base}/auth/login` | 账号密码登录 | ❌ |
-| POST | `{base}/auth/login/wechat` | 微信小程序一键登录 | ❌ |
-| POST | `{base}/auth/bind/wechat` | 绑定微信（当前登录账号） | ✅ |
-| GET | `{base}/auth/profile` | 获取当前登录用户与权限 | ✅ |
-| POST | `{base}/auth/logout` | 登出（吊销当前令牌） | ✅ |
+| GET | `{base}/getConfigs` | 获取全部公开配置（含登录开关） | 否 |
+| GET | `{base}/getConfigs/loginConfig` | 只获取登录配置分组 | 否 |
+| POST | `{base}/auth/login` | 账号密码登录 | 否 |
+| POST | `{base}/auth/login/wechat` | 微信小程序一键登录 | 否 |
+| POST | `{base}/auth/bind/wechat` | 绑定微信（当前登录账号） | 是 |
+| GET | `{base}/auth/profile` | 获取当前登录用户与权限 | 是 |
+| POST | `{base}/auth/logout` | 登出（吊销当前令牌） | 是 |
 
 ---
 
@@ -143,8 +143,8 @@ Content-Type: application/json
 
 | 字段 | 类型 | 必填 | 说明 |
 |---|---|:---:|---|
-| `username` | string | ✅ | Halo 用户名（`metadata.name`，非显示昵称） |
-| `password` | string | ✅ | 明文密码，走 HTTPS 传输 |
+| `username` | string | 是 | Halo 用户名（`metadata.name`，非显示昵称） |
+| `password` | string | 是 | 明文密码，走 HTTPS 传输 |
 
 ```json
 { "username": "zhangsan", "password": "your-password" }
@@ -188,7 +188,7 @@ Content-Type: application/json
 | `user.avatar` | string \| null | 头像地址，**可能为 `null`，需本地兜底占位图** |
 | `user.email` | string \| null | 邮箱 |
 | `roles` | string[] | 本次令牌实际持有的角色 |
-| `permissions` | object[] | RBAC 规则展开结果，用于前端鉴权显隐 |
+| `permissions` | object[] | 按角色展开的权限规则列表，用于前端显隐控制 |
 
 **错误码**
 
@@ -219,7 +219,7 @@ Content-Type: application/json
 
 | 字段 | 类型 | 必填 | 说明 |
 |---|---|:---:|---|
-| `code` | string | ✅ | `wx.login()` 获取的临时登录凭证，5 分钟有效、一次性 |
+| `code` | string | 是 | `wx.login()` 获取的临时登录凭证，5 分钟有效、一次性 |
 
 ```json
 { "code": "0e3Xx000abc..." }
@@ -447,7 +447,7 @@ function isExpired(expiresAt) {
 
 ### 6.2 前端如何使用 permissions
 
-`permissions` 是由角色模板递归展开的 RBAC 规则，形如：
+`permissions` 是由角色模板递归展开的权限规则，形如：
 
 ```json
 { "apiGroups": ["api.content.halo.run"], "resources": ["posts"], "verbs": ["create"] }
@@ -463,7 +463,7 @@ const canCreatePost = permissions.some(p =>
 );
 ```
 
-> ⚠️ `permissions` **仅供 UI 显隐参考，不能作为安全边界**。真正的鉴权在服务端完成。App 端隐藏按钮不代表接口不可调用，也不代表接口一定可调用（服务端可能因其他原因拒绝）。**始终以接口实际返回的 401/403 为准。**
+> `permissions` **仅供 UI 显隐参考，不能作为安全边界**。真正的鉴权在服务端完成。App 端隐藏按钮不代表接口不可调用，也不代表接口一定可调用（服务端可能因其他原因拒绝）。**始终以接口实际返回的 401/403 为准。**
 
 ### 6.3 无权限的表现
 

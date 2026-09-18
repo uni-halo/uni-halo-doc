@@ -15,6 +15,7 @@ import CustomFriendLinks from './components/CustomFriendLinks.vue';
 import CustomTeams from './components/CustomTeams.vue';
 import CustomAppTopBanner from './components/CustomAppTopBanner.vue';
 import StartSteps from './components/StartSteps.vue';
+import CustomUiPreview from './components/CustomUiPreview.vue';
 
 import { NolebaseGitChangelogPlugin } from '@nolebase/vitepress-plugin-git-changelog/client';
 import '@nolebase/vitepress-plugin-git-changelog/client/style.css';
@@ -46,6 +47,7 @@ const theme: ThemeConfig = {
 	enhanceApp({ app }) {
 		app.component('CustomAppTopBanner', CustomAppTopBanner);
 		app.component('StartSteps', StartSteps);
+		app.component('CustomUiPreview', CustomUiPreview);
 		app.component('CustomFooter', CustomFooter);
 		app.component('CustomUsingExamples', CustomUsingExamples);
 		app.component('CustomIframe', CustomIframe);
