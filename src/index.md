@@ -6,8 +6,8 @@ titleTemplate: 一个免费开源可多端编译的移动端博客源码丨微�
 
 hero:
   name: UNI-HALO
-  text: 跨平台移动端应用丨不止小程序
-  tagline: 基于 uni-app + Halo 2.x API 打造的现代化开源博客多端应用，视尔唯一，心之所向
+  text: 跨平台移动端 · 不止小程序
+  tagline: 基于 uni-app + Halo 2.x API 跨平台移动端应用。
   image:
     src: /logo.png
     alt: uni-halo
