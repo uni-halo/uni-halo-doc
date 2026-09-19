@@ -1,10 +1,12 @@
 <template>
     <div class="bilibili-video">
-        <iframe class="video-iframe" src="//player.bilibili.com/player.html?aid=518764151&cid=926513203&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+        <iframe v-if="src" class="video-iframe" :src="src" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
     </div>
 </template>
 
 <script setup lang="ts">
+// B 站视频地址（aid/cid 待新视频更新后填入），为空时不渲染 iframe
+const src = '';
 </script>
 
 <style scoped lang="less">

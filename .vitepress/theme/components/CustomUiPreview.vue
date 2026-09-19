@@ -37,7 +37,10 @@
 			</div>
 		</div>
 
-		<p v-if="footer" class="ui-preview-footer">{{ footer }}</p>
+		<div v-if="footer || link" class="ui-preview-footer">
+			<span v-if="footer" class="ui-preview-footer-text">{{ footer }}</span>
+			<a v-if="link" class="ui-preview-link" :href="link.href">{{ link.label }} →</a>
+		</div>
 	</div>
 </template>
 
@@ -65,6 +68,8 @@ const props = withDefaults(
 		/** 副标题（居中显示） */
 		subtitle?: string;
 		footer?: string;
+		/** 底部按钮链接（类似「阅读完整部署流程」） */
+		link?: { label: string; href: string };
 	}>(),
 	{
 		title: '',
@@ -81,7 +86,7 @@ const activeKey = ref(props.groups[0]?.key ?? '');
 <style scoped>
 .ui-preview {
 	max-width: 1150px;
-	margin: 40px auto 24px;
+	margin: 80px auto 24px;
 	padding: 0 24px;
 	box-sizing: border-box;
 }
@@ -178,10 +183,34 @@ const activeKey = ref(props.groups[0]?.key ?? '');
 }
 
 .ui-preview-footer {
-	margin-top: 16px;
+	margin-top: 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	text-align: center;
+}
+
+.ui-preview-footer-text {
 	font-size: 13px;
 	color: var(--vp-c-text-3);
-	text-align: center;
+}
+
+.ui-preview-link {
+	display: inline-block;
+	padding: 0.55rem 1.75rem;
+	border-radius: 999px;
+	background: var(--vp-c-brand);
+	color: #05080a;
+	font-weight: 600;
+	font-size: 0.95rem;
+	text-decoration: none;
+	transition: background-color 0.25s, transform 0.25s;
+}
+
+.ui-preview-link:hover {
+	background: var(--vp-c-brand-dark);
+	transform: translateY(-1px);
 }
 
 @media screen and (max-width: 960px) {

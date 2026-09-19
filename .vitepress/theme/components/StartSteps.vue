@@ -1,6 +1,6 @@
 <template>
 	<div class="start-steps">
-		<h2 class="start-steps-title">三步开启你的博客之旅</h2>
+		<h2 class="start-steps-title">部署流程</h2>
 		<p class="start-steps-tagline">从零开始，让 Halo 站点拥有一款精美的多端应用</p>
 		<div class="start-steps-grid">
 			<div v-for="(step, index) in steps" :key="index" class="start-step-card">
@@ -49,15 +49,17 @@ const steps = [
 .start-steps-title {
 	margin: 0 0 0.5rem;
 	border-top: none;
-	font-size: 1.5rem;
-	font-weight: 700;
-	letter-spacing: -0.02em;
+	font-size: 26px;
+	font-weight: 600;
+	line-height: 1.4;
+	letter-spacing: 0;
+	color: var(--vp-c-brand);
 }
 
 .start-steps-tagline {
-	margin: 0 0 2rem;
+	margin: 12px 0 2rem;
 	color: var(--vp-c-text-2);
-	font-size: 0.95rem;
+	font-size: 16px;
 }
 
 .start-steps-grid {

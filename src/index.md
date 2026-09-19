@@ -85,7 +85,7 @@ features:
 			]
 		}
 	]"
-	footer="更多页面截图与功能演示，请访问官网或阅读下方文档。"
+	:link="{ label: '查看全部界面预览', href: '/design/pages' }"
 >
 </CustomUiPreview>
 

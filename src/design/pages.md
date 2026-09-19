@@ -81,6 +81,10 @@
 |:--:|:--:|:--:|:--:|:--:|
 | ![联系博主](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/联系博主.png) | ![免责声明](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/免责声明.png) | ![我的收藏](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/收藏.png) | ![偏好设置](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/偏好设置.png) | ![维护模式](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/维护模式.png) |
 
+| 关于项目 | 内嵌网页 |
+|:--:|:--:|
+| ![关于项目](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/关于项目.png) | ![内嵌网页](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/内嵌网页.png) |
+
 ## 登录与个人界面
 
 | 用户侧边栏 | 我的主页 | 我的资料 | 用户主页 |
@@ -96,7 +100,3 @@
 | 相册管理 | 日记管理 | 故事管理 | 瞬间管理 |
 |:--:|:--:|:--:|:--:|
 | ![相册管理](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/相册管理.png) | ![日记管理](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/日记管理.png) | ![故事管理](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/故事管理.png) | ![瞬间管理](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/screenshots/app/v3.x/瞬间管理.png) |
-
-::: tip 补图说明
-以上截图统一托管在 [uni-halo-static](https://github.com/uni-halo/uni-halo-static) 仓库的 `screenshots/app/v3.x/` 与 `screenshots/plugin/v3.x/` 目录，文件名与功能对照见仓库 [screenshots/RESOURCE.md](https://github.com/uni-halo/uni-halo-static/blob/main/screenshots/RESOURCE.md)，按清单命名放入即可生效。
-:::
