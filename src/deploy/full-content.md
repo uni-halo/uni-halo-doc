@@ -16,7 +16,16 @@
 
 在 Halo 后台插件市场安装并启用以下插件（其余按需）：
 
-- **UniHalo 配置插件**（必须）：https://www.halo.run/store/apps/app-ryemX
+- **UniHalo 配置插件**（必须）：https://www.halo.run/store/apps/app-aukgwe3y
+- **评论组件**：https://www.halo.run/store/apps/app-YXyaD
+- **搜索组件**：https://www.halo.run/store/apps/app-DlacW
+- **链接管理**：https://www.halo.run/store/apps/app-hfbQg
+- **图库管理**：https://www.halo.run/store/apps/app-BmQJW
+- **瞬间**：https://www.halo.run/store/apps/app-SnwWD
+- **投票管理**：https://www.halo.run/store/apps/app-veyvzyhv
+- **数据看板**：https://www.halo.run/store/apps/app-rtnbbgfk
+
+完整清单（含插件 ID 与对应功能）见 [插件配置 - 安装插件](config.md#_1-安装插件)。
 
 ### 2.2 本地准备源码
 

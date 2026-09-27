@@ -4,7 +4,7 @@
 
 使用微信扫描下方二维码，即可在线预览小程序（或在网页右侧预览 H5 版）。
 
-![在线体验](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/images/mp.png)
+![在线体验](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/images/mp.jpeg)
 
 ## 主界面（TabBar）
 

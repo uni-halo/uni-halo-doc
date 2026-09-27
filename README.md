@@ -75,7 +75,7 @@
 
 - 代码仓库：[https://github.com/uni-halo/uni-halo-plugin](https://github.com/uni-halo/uni-halo-plugin)
 - 仓库版本：[https://github.com/uni-halo/uni-halo-plugin/releases](https://github.com/uni-halo/uni-halo-plugin/releases)
-- 应用市场：[https://www.halo.run/store/apps/app-ryemX](https://www.halo.run/store/apps/app-ryemX)
+- 应用市场：[https://www.halo.run/store/apps/app-aukgwe3y](https://www.halo.run/store/apps/app-aukgwe3y)
 
 ### 使用方式
 

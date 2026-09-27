@@ -30,7 +30,22 @@
 - uni-halo 文档：https://uni-halo-doc.ialley.cn
 - uni-halo 仓库：https://github.com/uni-halo/uni-halo
 - uni-halo 插件：https://github.com/uni-halo/uni-halo-plugin
-- 应用市场：https://www.halo.run/store/apps/app-ryemX
+- 应用市场：https://www.halo.run/store/apps/app-aukgwe3y
+
+### uni-halo 依赖插件（Halo 应用市场）
+
+除核心的 `UniHalo 配置` 插件外，评论、搜索、友链、图库、瞬间、投票、数据看板等能力依赖各自插件，按需安装：
+
+- UniHalo 配置（必须）：https://www.halo.run/store/apps/app-aukgwe3y
+- 评论组件：https://www.halo.run/store/apps/app-YXyaD
+- 搜索组件：https://www.halo.run/store/apps/app-DlacW
+- 链接管理：https://www.halo.run/store/apps/app-hfbQg
+- 图库管理：https://www.halo.run/store/apps/app-BmQJW
+- 瞬间：https://www.halo.run/store/apps/app-SnwWD
+- 投票管理：https://www.halo.run/store/apps/app-veyvzyhv
+- 数据看板：https://www.halo.run/store/apps/app-rtnbbgfk
+
+完整清单见 [插件配置 - 安装插件](config.md#_1-安装插件)。
 
 ### Halo 应用
 

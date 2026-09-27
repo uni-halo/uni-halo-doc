@@ -4,20 +4,23 @@
 
 ## 1. 安装插件
 
-`uni-halo` 需要使用到的插件列表如下：
+`uni-halo` 需要使用到的插件列表如下（插件 ID 与应用内实际检测的一致，未安装或启用时对应页面会展示「插件不可用」提示）：
 
-- 配置插件（UniHalo）：https://www.halo.run/store/apps/app-ryemX
-- 评论组件：https://www.halo.run/store/apps/app-YXyaD
-- 搜索组件：https://www.halo.run/store/apps/app-DlacW
-- 链接管理：https://www.halo.run/store/apps/app-hfbQg
-- 图库管理：https://www.halo.run/store/apps/app-BmQJW
-- 瞬间插件：https://www.halo.run/store/apps/app-SnwWD
-- 投票管理：https://www.halo.run/store/apps/app-veyvzyhv
+| 插件 | 插件 ID | 说明 | 是否必须 | 应用市场 |
+|------|---------|------|----------|----------|
+| UniHalo 配置 | `uni-halo` | 核心插件：页面配置、横幅、公告、友链（小程序）、恋爱日记、移动端登录、恋爱日记前台模板 | 必须 | https://www.halo.run/store/apps/app-aukgwe3y |
+| 评论组件 | `PluginCommentWidget` | 文章评论与评论验证码 | 按需 | https://www.halo.run/store/apps/app-YXyaD |
+| 搜索组件 | `PluginSearchWidget` | 文章搜索 | 按需 | https://www.halo.run/store/apps/app-DlacW |
+| 链接管理 | `PluginLinks` | 友情链接页「站点」Tab 的友链数据 | 按需 | https://www.halo.run/store/apps/app-hfbQg |
+| 图库管理 | `PluginPhotos` | 图库页的照片与分组数据 | 按需 | https://www.halo.run/store/apps/app-BmQJW |
+| 瞬间 | `PluginMoments` | 瞬间页与瞬间详情 | 按需 | https://www.halo.run/store/apps/app-SnwWD |
+| 投票管理 | `vote` | 投票中心与投票详情 | 按需 | https://www.halo.run/store/apps/app-veyvzyhv |
+| 数据看板 | `data-statistics` | 数据统计页的可视化图表 | 按需 | https://www.halo.run/store/apps/app-rtnbbgfk |
 
-以上的插件，可以直接访问地址去安装（推荐部署好你自己的 Halo 应用后，在应用后台的插件市场中搜索安装）。
+以上插件可以直接访问应用市场地址安装，也推荐部署好你自己的 Halo 应用后，在应用后台的插件市场中搜索安装。
 
 ::: tip 说明
-其中 **配置插件（UniHalo）是核心插件**，必须安装并启用；其余插件按需安装，对应功能（评论、搜索、友链、图库、瞬间、投票）才会可用。插件的安装与启用请参考 [Halo 插件文档](https://docs.halo.run/user-guide/plugins)。
+其中 **UniHalo 配置插件是核心插件**，必须安装并启用；其余插件按需安装，对应功能（评论、搜索、友链、图库、瞬间、投票、数据看板）才会可用。插件的安装与启用请参考 [Halo 插件文档](https://docs.halo.run/user-guide/plugins)。
 :::
 
 ## 2. 配置插件
@@ -43,18 +46,13 @@
 
 ### 2.3 平台接入（integrationConfig）
 
-第三方插件配置，当前支持 **Tools 工具箱插件**（作者：柳意梧情），用于开启文章加密访问：
-
-| 配置项 | 说明 |
-|--------|------|
-| 是否启用 | 开启后需填写以下信息 |
-| 插件 ID | 默认 `PluginTools` |
-| 授权 Token | Tools 工具箱插件设置的认证 token |
-| 验证码获取方式 | 微信公众号获取（需填扫码链接）或 小程序广告获取（需填视频广告 ID） |
+第三方插件配置。当前暂无插件，分组结构保留供后续接入。
 
 ### 2.4 主题展示（themeConfig）
 
-主题悬浮窗配置，开启后向主题页面注入悬浮卡片（用于展示小程序太阳码）：
+控制插件在**主题前台页面**上的展示行为，包含两个子分组：主题悬浮窗、恋爱日记主题页。
+
+**主题悬浮窗（floatingWindow）**：开启后向主题页面注入悬浮卡片（用于展示小程序太阳码）。
 
 | 配置项 | 说明 |
 |--------|------|
@@ -71,6 +69,21 @@
 | 记住关闭状态 | 开启后访客关闭后同浏览器下次访问不再显示 |
 | 小程序申请 | 开启后卡片底部显示「申请」「友链信息」按钮 |
 
+**恋爱日记主题页（loveDiaryTheme）**：在站点前台注册恋爱日记页面路由并渲染插件内置模板，主题可直接展示，也可整页接管。详见 [插件指南 - 恋爱日记前台模板](/plugin/love-template)。
+
+| 配置项 | 说明 |
+|--------|------|
+| 启用恋爱日记主题页 | 总开关，**默认关闭**。关闭时插件不注册任何前台路由、不注入任何资源 |
+| 页面路径 - 恋爱日记首页 | 默认 `/love`。以 `/` 开头 = 绝对完整路径；留空 = 不注册该页 |
+| 页面路径 - 恋爱故事 / 恋爱相册 / 恋爱清单 | 默认 `stories` / `albums` / `daily`。不以 `/` 开头 = 相对首页路径的子段（默认解析为 `/love/stories`）；以 `/` 开头 = 绝对路径；留空 = 不注册该页 |
+| 页面外壳 | 跟随主题布局（复用主题的页头页脚与整体外壳）/ 独立页面（不依赖主题的 layout 契约，用于主题未适配时兜底） |
+| 强调色 | 恋爱页强调色（按钮、解锁表单、图标高亮等），默认 `#f83856`，同时作为前端 CSS 变量默认值 |
+| 首页显示各模块最新 3 条 | 开启后首页在各模块入口下方显示最近 3 条内容预览 |
+
+::: tip 说明
+恋爱日记主题页的背景图取自 **通用配置 → 页面设置 → 恋爱日记页**；相册查看密码在 **控制台 → 恋爱管理 → 恋爱相册** 中维护，锁定与解锁行为由服务端保证。
+:::
+
 ### 2.5 移动端登录（loginConfig）
 
 移动端登录能力的总开关与微信登录配置，详见 [插件指南 - 移动端登录](/plugin/mobile-login)：
@@ -83,10 +96,6 @@
 | 自动注册用户名前缀 | 微信首次登录自动注册的用户名前缀，默认 `unihalo` |
 | 权限策略 / 登录后默认角色 | 控制移动端令牌的权限上限 |
 | 令牌有效期（天） | 登录令牌的有效天数，默认 30 |
-
-::: tip 📷 截图占位
-此处待补充：「插件设置 → 移动端登录」配置页截图。
-:::
 
 ::: tip 更多配置
 除以上分组外，页面内容（横幅、公告、友链、恋爱日记、应用信息等）在插件的**控制台管理页面**中维护，详见 [插件指南 - 控制台功能](/plugin/console)。

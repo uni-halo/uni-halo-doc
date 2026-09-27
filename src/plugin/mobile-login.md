@@ -39,10 +39,6 @@ Halo 原生没有「第三方客户端登录」能力。Halo 的访问令牌（P
 
 进入 **Halo 后台 → 插件 → UniHalo → 设置 → 移动端登录**。
 
-::: tip 截图占位
-此处待补充：「设置 → 移动端登录」配置页截图。
-:::
-
 | 配置项 | 说明 | 建议 |
 |---|---|---|
 | 开启登录能力 | 总开关 | 先设为「开启」，其余配好后再回来确认 |
@@ -74,10 +70,6 @@ unihalo01  unihalo02  unihalo03  ...  unihalo99  unihalo100
 ### 第 2 步：配置登录权限
 
 同页 **登录权限** 区域。
-
-::: tip 截图占位
-此处待补充：「登录权限」区域截图。
-:::
 
 | 配置项 | 说明 | 默认 |
 |---|---|---|
@@ -120,10 +112,6 @@ unihalo01  unihalo02  unihalo03  ...  unihalo99  unihalo100
 
 4. 保存设置
 
-::: tip 截图占位
-此处待补充：「微信小程序密钥」新建与填写截图。
-:::
-
 > 密钥只保存在服务端，不会下发给客户端；请妥善保管 AppSecret，泄露后请在微信公众平台重置并回到此处更新。
 
 > **结论**：安全边界是「Halo 的权限体系」，不是加密。因此**不要给不可信的角色授予 Secret 读取权限**，也不要把 Halo 管理员账号交给不信任的人。
@@ -140,7 +128,7 @@ https://example.com
 
 ### 第 5 步：验证
 
-1. 用 App / 小程序访问 `GET /apis/api.unihalo.ialley.cn/v1alpha1/plugins/uni-halo/getConfigs/loginConfig`，确认返回的三个开关与设置一致
+1. 用 App / 小程序访问 `GET /apis/api.unihalo.ialley.cn/v1alpha1/getConfigs/loginConfig`，确认返回的三个开关与设置一致
 2. 走一次登录，确认能拿到 `token`
 3. 带 `Authorization: Bearer <token>` 调一次 `GET .../auth/profile`，确认能拿到用户信息
 
@@ -183,7 +171,7 @@ https://example.com
 
 ### 5.4 手动吊销
 
-用户在 App 端调 `/auth/logout` 即吊销当前令牌。管理员也可在后台「个人令牌」直接删除。
+用户在 App 端调 `/auth/-/logout` 即吊销当前令牌。管理员也可在后台「个人令牌」直接删除。
 
 ---
 

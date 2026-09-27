@@ -34,7 +34,7 @@
 ### 2.1 Base URL
 
 ```
-https://<你的站点域名>/apis/api.unihalo.ialley.cn/v1alpha1/plugins/uni-halo
+https://<你的站点域名>/apis/api.unihalo.ialley.cn/v1alpha1
 ```
 
 下文所有路径均相对此 Base URL，简记为 `{base}`。
@@ -42,7 +42,7 @@ https://<你的站点域名>/apis/api.unihalo.ialley.cn/v1alpha1/plugins/uni-hal
 例如登录接口完整地址为：
 
 ```
-POST https://example.com/apis/api.unihalo.ialley.cn/v1alpha1/plugins/uni-halo/auth/login
+POST https://example.com/apis/api.unihalo.ialley.cn/v1alpha1/auth/-/login
 ```
 
 ### 2.2 请求头
@@ -83,11 +83,12 @@ POST https://example.com/apis/api.unihalo.ialley.cn/v1alpha1/plugins/uni-halo/au
 |---|---|---|:---:|
 | GET | `{base}/getConfigs` | 获取全部公开配置（含登录开关） | 否 |
 | GET | `{base}/getConfigs/loginConfig` | 只获取登录配置分组 | 否 |
-| POST | `{base}/auth/login` | 账号密码登录 | 否 |
+| POST | `{base}/auth/-/login` | 账号密码登录 | 否 |
 | POST | `{base}/auth/login/wechat` | 微信小程序一键登录 | 否 |
 | POST | `{base}/auth/bind/wechat` | 绑定微信（当前登录账号） | 是 |
 | GET | `{base}/auth/profile` | 获取当前登录用户与权限 | 是 |
-| POST | `{base}/auth/logout` | 登出（吊销当前令牌） | 是 |
+| GET | `{base}/auth/token-check` | 令牌探活（判断当前令牌是否仍有效） | 是 |
+| POST | `{base}/auth/-/logout` | 登出（吊销当前令牌） | 是 |
 
 ---
 
@@ -135,7 +136,7 @@ showWechatButton = wechatLoginEnabled;
 ### 4.2 账号密码登录
 
 ```
-POST {base}/auth/login
+POST {base}/auth/-/login
 Content-Type: application/json
 ```
 
@@ -329,12 +330,47 @@ Authorization: Bearer <token>
 
 ---
 
-### 4.6 登出
+### 4.6 令牌探活
+
+判断当前令牌是否仍有效。App 启动 / 回前台时调用一次；**仅校验令牌本身**，
+不返回用户资料与权限（需要资料时另行调用 `4.5 获取当前用户`）。
+
+```
+GET {base}/auth/token-check
+Authorization: Bearer <token>
+```
+
+**响应示例（有效，200）**
+
+```json
+{
+  "valid": true,
+  "username": "zhangsan",
+  "patName": "pat-zhangsan-abc123",
+  "expiresAt": "2026-10-01T00:00:00Z"
+}
+```
+
+| 字段 | 说明 |
+|---|---|
+| `valid` | 恒为 `true`（无效时直接返回 401，不会构造本响应体） |
+| `username` | 所属用户名 |
+| `patName` | 对应个人令牌扩展名；浏览器会话等非令牌登录时为 `null` |
+| `expiresAt` | 过期时间，`null` 表示不过期；客户端可据此做临期提醒 |
+
+**客户端判定规则**：HTTP 200 = 令牌有效，继续使用；HTTP 401 = 已失效
+（`exp` 过期 / 被新设备登录互踢 / 已登出吊销），清除本地登录态并回到登录页。
+
+**错误码**：`UNAUTHENTICATED`
+
+---
+
+### 4.7 登出
 
 吊销当前使用的令牌。
 
 ```
-POST {base}/auth/logout
+POST {base}/auth/-/logout
 Authorization: Bearer <token>
 ```
 
@@ -351,7 +387,7 @@ Authorization: Bearer <token>
 
 ---
 
-### 4.7 扫码绑定微信（PC 端 UC 场景，小程序侧对接）
+### 4.8 扫码绑定微信（PC 端 UC 场景，小程序侧对接）
 
 PC 浏览器用户在 UC「个人资料 → 微信绑定」点「扫码绑定」会得到一张二维码，
 **二维码内容即 `qrContent` 字符串本身**（不是 URL）：
@@ -369,12 +405,27 @@ uh-bindwx-{ticket}
 1. **扫码识别**：`uni.scanCode` / wx.scanCode 拿到字符串，校验 `uh-bindwx-` 前缀，截取 ticket；
 2. **确认绑定**：跳转确认页（展示站点信息），用户点「确认绑定」后调 confirm 接口。
 
-**确认绑定接口（匿名，无需登录）**：
+**确认（登记扫码）接口**：
 
 ```
 POST {base}/auth/bind/wechat/qr/tickets/{ticket}/confirm
 Content-Type: application/json
 ```
+
+> **两阶段确认（重要）**：扫码确认**不会直接建立绑定**，只把扫码方的微信身份
+> 登记到票据上（状态 `PENDING → SCANNED`）。真正的绑定要等 PC 端发起者在弹窗里
+> 看到「有设备扫码（微信标识尾号 xxxx）」并点「确认绑定」后才发生。
+> 这样设计的原因：二维码必然会被屏幕共享、截图外传看到，一阶段模型下任何拿到
+> ticket 的人都能用自己的微信绑到受害者账号（账号接管）；两阶段把危害收敛为
+> 「必须受害者本人再点一次确认」。
+>
+> 小程序端确认后应进入「等待确认」态并轮询票据状态（见下），绑定结果以
+> 票据终态为准，不要把 confirm 返回成功当作绑定成功。
+
+> 建议携带登录态（App 端已通过 `meta.needAuthToken` 携带）：服务端据此判断
+> 扫码者是否已登录**其他**账号——手机登录着 B 却扫了 A 的码时直接拒绝
+> （`BIND_SIGNED_IN_OTHER_ACCOUNT`，409），且**不消费票据**，退出登录后
+> 同一个二维码仍可使用。未登录时按匿名处理，行为不变。
 
 **请求体**（`wx.login()` 取得的 code，服务端用它换取微信身份）：
 
@@ -388,17 +439,51 @@ Content-Type: application/json
 { "success": true }
 ```
 
+**轮询接口（匿名可调，带登录态时返回 `mine` 预检字段）**：`GET {base}/auth/bind/wechat/qr/tickets/{ticket}`，返回：
+
+```json
+{
+  "ticket": "…",
+  "status": "SCANNED",
+  "reason": "",
+  "hint": "wxid_****abcd",
+  "mine": null
+}
+```
+
+状态含义：`PENDING` 等待扫码 / `SCANNED` 已登记待 PC 端确认（`hint` 为扫码方
+微信标识的脱敏尾号，仅此状态有值）/ `CONFIRMED` 绑定成功 / `FAILED` 绑定失败或
+被 PC 端拒绝（`reason` 为失败原因文案）/ `EXPIRED` 已过期。
+
+`mine` 是给小程序端的**登录态预检**：请求带有效令牌时返回「当前登录账号是否就是
+票据归属」（`true` / `false`）；匿名调用恒为 `null`（无登录态可比，匿名扫码是
+合法主流程）。客户端可据此在 confirm 前提前失败（省一次 `wx.login`），或把确认页
+文案改为「将绑定到你当前登录的账号」。注意 `mine` 只是 UX 预检，**不是安全边界**——
+真正的归属裁决始终在 confirm 时由服务端完成，客户端不得因 `mine=true` 跳过 confirm。
+该接口匿名可查，因此**永不回显归属用户名**，只回答"是不是你的票"。
+
 **错误码**：
 
 | code | HTTP | 含义 |
 |---|---|---|
-| `BIND_TICKET_INVALID` | 400 | 票据不存在 / 已使用 / 已过期（提示用户重新生成二维码） |
+| `BIND_TICKET_INVALID` | 400 | 票据不存在 / 已使用 / 已过期 / 重复扫码（提示用户重新生成二维码） |
 | `WECHAT_LOGIN_DISABLED` | 401 | 站点未开启微信登录 |
-| `WECHAT_LOGIN_FAILED` | 401 | code 无效（重试一次 `wx.login()`）或密钥未配置 |
+| `WECHAT_LOGIN_FAILED` | 401 | code 无效（重试一次 `wx.login()`）或响应解析失败 |
+| `WECHAT_NOT_CONFIGURED` | 403 | 站点未配置微信密钥（配置类，联系站长） |
+| `WECHAT_ALREADY_BOUND` | 409 | 该微信已绑定其他账号（PC 端确认后落 `FAILED`） |
+| `ACCOUNT_ALREADY_BOUND` | 409 | 目标账号（票据锁定的 UC 账号）已绑定另一个微信 |
+| `BIND_SIGNED_IN_OTHER_ACCOUNT` | 409 | 扫码时已登录其他账号（票据未被消费，退出登录后可重扫） |
 
 > **绑定语义**：绑定目标是**生成二维码时登录的那个 UC 账号**（服务端在签发票据时已锁定，
-> confirm 不接受指定用户名）。若该微信已绑定其他账号，绑定关系会改挂到目标账号（以票
-> 据为准）。票据 5 分钟过期、单次有效。
+> confirm 不接受指定用户名）。命中一对一冲突时**一律拒绝**，不再改挂绑定关系。
+> 票据 3 分钟过期、单次有效。
+>
+> **失败必须落终态**：确认后的绑定失败时服务端会把票据置为 `FAILED` 并把 `message`
+> 写进票据 reason，UC 轮询接口原样返回 —— 否则轮询方会看到「已消费」并误报成功。
+> 同时错误会记入插件日志（`【UniHalo】扫码绑定失败：ticket=… code=… message=…`），
+> 便于站长排查；微信 code 属一次性凭据，不入日志。
+>
+> PC 端确认成功（绑定建立）后会向目标账号发一条「微信绑定成功」站内通知。
 
 ---
 
@@ -490,7 +575,7 @@ App 启动
               ├─ 微信按钮 ──► wx.login() ──► POST /auth/login/wechat
               │                              （未绑定会自动建号，无中间态）
               │
-              └─ 密码表单 ──► POST /auth/login
+              └─ 密码表单 ──► POST /auth/-/login
                                    │
                                    ▼
                         保存 token / expiresAt / user
@@ -499,7 +584,9 @@ App 启动
                         Authorization: Bearer <token> 访问业务接口
 ```
 
-**会话恢复**：启动时若无本地缓存或已过期，重新走一遍登录；**不要**用 `/auth/profile` 轮询（见 4.5 的已知问题）。
+**会话恢复**：启动 / 回前台时先调 `GET /auth/token-check` 探活（200 = 有效，401 = 失效），
+失效则清本地态重新走一遍登录；需要刷新资料与权限时再调 `/auth/profile`。
+**不要**用 `/auth/profile` 做轮询（见 4.5 的已知问题），轻量探活一律走 `/auth/token-check`。
 
 ---
 
@@ -507,7 +594,7 @@ App 启动
 
 ```ts
 // utils/auth.ts
-const BASE = 'https://example.com/apis/api.unihalo.ialley.cn/v1alpha1/plugins/uni-halo';
+const BASE = 'https://example.com/apis/api.unihalo.ialley.cn/v1alpha1';
 const KEY = 'uh_token';
 
 interface Session {
@@ -535,7 +622,7 @@ export const auth = {
 
   async loginByPassword(username: string, password: string) {
     const [, data] = await uni.request({
-      url: `${BASE}/auth/login`,
+      url: `${BASE}/auth/-/login`,
       method: 'POST',
       header: { 'Content-Type': 'application/json' },
       data: { username, password }
@@ -563,7 +650,7 @@ export const auth = {
     const s = auth.get();
     if (s) {
       await uni.request({
-        url: `${BASE}/auth/logout`,
+        url: `${BASE}/auth/-/logout`,
         method: 'POST',
         header: { Authorization: `Bearer ${s.token}` }
       }).catch(() => {});

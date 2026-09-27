@@ -4,7 +4,7 @@
 
 - 插件名称：Uni Halo
 - 插件 ID：`uni-halo`（Halo 控制台访问路径 `/console/plugins/uni-halo`）
-- 插件市场：https://www.halo.run/store/apps/app-ryemX
+- 插件市场：https://www.halo.run/store/apps/app-aukgwe3y
 - 源码仓库：https://github.com/uni-halo/uni-halo-plugin
 - 环境要求：Halo ≥ 2.26，Java 21+（仅开发构建时需要）
 
@@ -31,7 +31,7 @@
 
 ### 4. 插件设置（Setting 表单）
 
-提供五大配置分组：基本设置、安全控制（验证码）、平台接入（第三方插件）、主题展示（悬浮窗）、移动端登录（登录方式与微信密钥），详见 [插件配置](/deploy/config)。
+提供五大配置分组：基本设置、安全控制（验证码）、平台接入（第三方插件）、主题展示（悬浮窗 + 恋爱日记主题页）、移动端登录（登录方式与微信密钥），详见 [插件配置](/deploy/config)。其中「恋爱日记主题页」用于在站点前台注册并渲染恋爱日记页面，详见 [恋爱日记前台模板](./love-template)。
 
 ### 5. 公开数据接口
 
@@ -54,8 +54,9 @@ uni-halo-plugin
 ## 安装与使用
 
 1. 在 Halo 后台插件市场搜索 `UniHalo` 安装，或从 [Releases](https://github.com/uni-halo/uni-halo-plugin/releases) 下载 jar 包手动安装；
-2. 启用插件后进入插件控制台，进行内容管理（见 [控制台功能](console.md)）；
-3. 在插件设置中完成参数配置（见 [插件配置](/deploy/config)）。
+2. 按需安装其他依赖插件（评论组件、搜索组件、链接管理、图库管理、瞬间、投票管理、数据看板等），完整清单见 [插件配置 - 安装插件](/deploy/config#_1-安装插件)；
+3. 启用插件后进入插件控制台，进行内容管理（见 [控制台功能](console.md)）；
+4. 在插件设置中完成参数配置（见 [插件配置](/deploy/config)）。
 
 ## 开发与构建
 

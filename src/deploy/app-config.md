@@ -62,11 +62,14 @@ WECHAT_DEVTOOLS_CLI_PATH = 'D:\DevUtils\Tencent\微信web开发者工具\cli.bat
 | `VITE_APP_PORT` | 本地开发服务器端口，默认 `5200` |
 | `VITE_UNI_APPID` | uni-app 应用标识（DCloud 分配），默认使用项目自带的即可 |
 | `VITE_APP_PUBLIC_BASE` | H5 部署的 base 路径，部署在域名根路径时保持 `/` |
-| `VITE_APP_HALO_TOKEN` | 在 Halo 个人中心生成的 token（按需） |
 | `VITE_APP_PROXY_ENABLE` / `VITE_APP_PROXY_PREFIX` | H5 代理开关与前缀，默认关闭 |
 | `VITE_AUTH_MODE` | 认证模式：`single` 单 token / `double` 双 token，默认 `single` |
 | `VITE_DELETE_CONSOLE` | 生产构建是否移除 console/debugger |
 | `VITE_SHOW_SOURCEMAP` | 生产构建是否开启 sourcemap |
+
+::: tip 说明
+访问令牌不再通过环境变量配置：移动端登录后使用的令牌由 `UniHalo 配置` 插件签发，登录能力与权限在插件设置中控制，详见 [插件指南 - 移动端登录](/plugin/mobile-login)。
+:::
 
 ## 3. 配置生效方式
 
