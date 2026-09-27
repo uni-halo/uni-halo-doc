@@ -4,9 +4,8 @@
         <div class="desc">—— 视尔唯一·心之所向·素履而往 ——</div>
         <div class="desc">颜值较高的一款 Halo2.x 的小程序源码，欢迎体验</div>
         <div class="img-list">
-            <img class="qrcode" src="https://img.925i.cn/file/a0c1a95b49b5db7f78248.png" data-fancybox="gallery"/>
-            <img class="qrcode" src="https://img.925i.cn/file/b83b9e79695779c4344f3.png" data-fancybox="gallery"/>
-            <img class="qrcode" src="https://img.925i.cn/file/a30bc81fbb998c68728cd.png" data-fancybox="gallery"/>
+            <img class="qrcode" src="https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static@main/images/mp.jpeg" data-fancybox="gallery"/>
+            <img class="qrcode" src="https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static@main/images/qqqun.jpeg" data-fancybox="gallery"/>
         </div>
     </div>
 </template>

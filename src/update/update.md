@@ -39,6 +39,7 @@
 - 适配 Halo 2.x API
 - 新增恋爱日记模块
 - 页面支持插件配置
+- 完整日志见旧仓库：https://github.com/ialley-workshop-open/uni-halo
 
 </details>
 
@@ -47,6 +48,7 @@
 
 - v1.0.0（2022-12-07）：首个公开版本
 - v1.0.1 ~ v1.0.4：问题修复与体验优化
+- 完整日志见旧仓库：https://github.com/ialley-workshop-open/uni-halo
 
 </details>
 

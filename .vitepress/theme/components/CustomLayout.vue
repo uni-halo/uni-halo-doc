@@ -4,18 +4,8 @@
 			<div  class='recommend-container'>
 				<p class='item-title'>在线体验</p>
 				<p class='item-desc'>uni-halo 小程序版本演示</p>
-				<img alt='小莫唐尼' class='ad-image' data-fancybox='gallery' src='https://img.925i.cn/file/a0c1a95b49b5db7f78248.png' />
-				<img alt='官方交流群（QQ）' class='ad-image' data-fancybox='gallery' src='https://img.925i.cn/file/b83b9e79695779c4344f3.png' />
-<!--				<p class='item-title' style='margin-top: 24px;'>图图小绘（壁纸表情小程序）</p>-->
-<!--				<p v-if='false' class='item-desc' style='margin-bottom: -6px;'>一个文案图库表情包小程序</p>-->
-<!--				<div v-if='false' class='ad-image border'>-->
-<!--					<img alt='图图小绘（微信小程序）' data-fancybox='gallery' src='https://img.925i.cn/file/6fadeb1cb095944954a59.jpg' />-->
-<!--				</div>-->
-<!--				<img  alt='图图小绘（微信小程序）' class='ad-image' data-fancybox='gallery' src='https://img.925i.cn/file/d316c4724f2dd3cac685c.jpg' />-->
-<!--				<p class='item-title' style='margin-top: 24px;'>秒懂文案馆（微信公众号）</p>-->
-<!--				<p v-if='false' class='item-desc' style='margin-bottom: -6px;'>一个内容丰富的微信公众号</p>-->
-<!--				<img alt='秒懂文案馆（微信公众号）' class='ad-image border no-padding' data-fancybox='gallery'-->
-<!--						 src='/mdwag.png' />-->
+				<img alt='小莫唐尼' class='ad-image' data-fancybox='gallery' src='https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static@main/images/mp.jpeg' />
+				<img alt='官方交流群（QQ）' class='ad-image' data-fancybox='gallery' src='https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static@main/images/qqqun.jpeg' />
 			</div>
 		</template>
 		<template #not-found>
@@ -33,15 +23,6 @@
 			<CustomDialog v-if='dialogShow' title='站长推荐' :zIndex='100' @on-close='handleClose'>
 				<template #body>
 					<div class='recommend-app'>
-						<div v-if='false' class='recommend-app-item pink'>
-							<img alt='uni-halo 小程序版本演示' class='recommend-app-cover' data-fancybox='gallery'
-									 src='https://img.925i.cn/file/6fadeb1cb095944954a59.jpg' />
-							<div class='recommend-app-text'>
-								<p><strong style='font-size: 18px'>《图图小绘》</strong>- 微信小程序打造个性化的利器！</p>
-								<p> 丰富多样的壁纸、头像和表情包资源免费下载。</p>
-								<p> 精心分享聊天、朋友圈以及个性签名等类型文案！</p>
-							</div>
-						</div>
 						<div v-if='false' class='recommend-app-item pink'>
 							<img alt='秒懂文案馆' class='recommend-app-cover' data-fancybox='gallery' src='/mdwag_qrcode.jpg' />
 							<div class='recommend-app-text'>
