@@ -69,7 +69,8 @@
 					<XiaoButton :use-animation='true' size='mini' title='知道啦，我会记得关注滴' type='primary' @click='handleClose'></XiaoButton>
 				</template>
 			</CustomDialog>
-			<CustomAppPreview></CustomAppPreview>
+			<CustomAppPreview v-if='ENABLE_APP_PREVIEW'></CustomAppPreview>
+			<CustomSunCodePreview></CustomSunCodePreview>
 			<DonatePreview></DonatePreview>
 			<CustomDialog v-if='validKnowTokenDialog.show' :use-close='false' :zIndex='100' title='重要提示'>
 				<template #body>
@@ -147,6 +148,7 @@ import { checkPropertyInWindow } from '../../../src/utils';
 import { AppConfigs } from '../../../src/config';
 import XiaoButton from './ui/XiaoButton.vue';
 import CustomAppPreview from './CustomAppPreview.vue';
+import CustomSunCodePreview from './CustomSunCodePreview.vue';
 import DonatePreview from './DonatePreview.vue';
 import CustomHomeStars from './CustomHomeStars.vue';
 import CustomAppTopBanner from './CustomAppTopBanner.vue';
@@ -168,6 +170,12 @@ const isUseVaildInput = ref(false);
  * false = 不再弹出；模板、样式、输入校验逻辑全部保留。
  */
 const ENABLE_VALID_KNOW_TOKEN_DIALOG = false;
+
+/**
+ * 「右侧在线预览」（iframe 预览 + 二维码弹层）总开关。
+ * false = 隐藏组件；由右侧「太阳码」组件（CustomSunCodePreview）替代。
+ */
+const ENABLE_APP_PREVIEW = false;
 
 /**
  * 「消息通知」（浏览器 Notify 桌面通知）总开关。
