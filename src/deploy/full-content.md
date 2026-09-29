@@ -75,4 +75,4 @@ pnpm dev:mp
 
 ## 六、发布 APP（可选）
 
-APP 发布流程整理中，见 [发布 APP](app-release.md)（预留待补充）。
+APP 发布流程见 [发布 APP](app-release.md)。
