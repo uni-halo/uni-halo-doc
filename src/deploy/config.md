@@ -16,11 +16,14 @@
 | 瞬间 | `PluginMoments` | 瞬间页与瞬间详情 | 按需 | https://www.halo.run/store/apps/app-SnwWD |
 | 投票管理 | `vote` | 投票中心与投票详情 | 按需 | https://www.halo.run/store/apps/app-veyvzyhv |
 | 数据看板 | `data-statistics` | 数据统计页的可视化图表 | 按需 | https://www.halo.run/store/apps/app-rtnbbgfk |
+| 项目集 | `portfolio` | 项目集模块，用于展示项目与作品集（含文章内项目卡片） | 按需 | https://github.com/liuyiwuqing/halo-plugin-portfolio |
+| 豆瓣 | `plugin-douban` | 豆瓣模块，用于展示豆瓣影书记录（含文章内豆瓣卡片） | 按需 | https://github.com/chengzhongxue/plugin-douban |
+| 轻言 | `hitokoto-hub` | 首页一言模块，用于展示随机句子并支持点赞 | 按需 | https://github.com/puresky-git/plugin-hitokoto-hub |
 
 以上插件可以直接访问应用市场地址安装，也推荐部署好你自己的 Halo 应用后，在应用后台的插件市场中搜索安装。
 
 ::: tip 说明
-其中 **UniHalo 配置插件是核心插件**，必须安装并启用；其余插件按需安装，对应功能（评论、搜索、友链、图库、瞬间、投票、数据看板）才会可用。插件的安装与启用请参考 [Halo 插件文档](https://docs.halo.run/user-guide/plugins)。
+其中 **UniHalo 配置插件是核心插件**，必须安装并启用；其余插件按需安装，对应功能（评论、搜索、友链、图库、瞬间、投票、数据看板、项目集、豆瓣、轻言）才会可用。插件的安装与启用请参考 [Halo 插件文档](https://docs.halo.run/user-guide/plugins)。
 :::
 
 ## 2. 配置插件
