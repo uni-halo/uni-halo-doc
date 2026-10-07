@@ -58,7 +58,22 @@ WECHAT_DEVTOOLS_CLI_PATH = 'D:\DevUtils\Tencent\微信web开发者工具\cli.bat
 
 「足迹地图」页面使用 uni-app 的 `<map>` 组件，需要向地图服务商申请 Key。**如果你不使用足迹地图，可以跳过本章。**
 
-### 2.1 严禁把 Key 提交到公开仓库
+### 2.1 哪些端需要配 Key
+
+先看清生效范围，可以避免白申请 Key、白折腾配置：
+
+| 发布端 | 是否需要配置 Key | 说明 |
+|--------|------------------|------|
+| H5 | 需要 | 在 `env/.env.local` 填腾讯 Key 或高德 JSKEY，配置后重启/重新构建 H5 即可生效 |
+| App（Android / iOS / 鸿蒙） | 需要 | 额外要在 HBuilderX 的 `App模块配置` 里勾选 `Maps` 并在 `App SDK 配置` 填对应 Key，详见 [发布 APP - 足迹地图的模块与 Key](app-release.md#_6-2-足迹地图的模块与-key) |
+| 微信小程序 | **不需要** | `<map>` 组件的底图由微信平台直接提供（腾讯地图），不用你申请 Key、也不用填环境变量 |
+| 只发布微信小程序 | **完全不用配** | 只发小程序时，整套地图 Key 配置都可以跳过，`env/.env.local` 保持为空即可 |
+
+::: tip 一句话结论
+**只发微信小程序 → 一个 Key 都不用配；只发 H5 → 配一个腾讯 Key；发 App → 配 Key + 勾模块。**
+:::
+
+### 2.2 严禁把 Key 提交到公开仓库
 
 ::: danger 高危
 地图 Key 是**付费凭据**，等同于账号密码。仓库一旦公开，任何人都能从源码里翻出你的 Key 并拿去调用图商接口，产生的后果由你承担：
@@ -106,24 +121,27 @@ git status --short && git diff --cached
 3. 仅靠 `git commit` 删文件无法清除历史记录，如果仓库已经推送到公开平台，联系平台方清理或按平台流程重写历史；切勿抱着「历史里看不到就行」的侥幸心理。
 :::
 
-### 2.2 腾讯地图与高德地图怎么选
+### 2.3 腾讯地图与高德地图怎么选
 
 `manifest.config.ts` 已经处理好了分支逻辑：**同一端同一时刻只输出一个图商节点**（腾讯优先，高德兜底），Key 为空则不写入对应节点，因此两套 Key 不需要同时配置。
 
 | 配置项 | 生效端 | 申请入口 | 注意事项 |
 |--------|--------|----------|----------|
-| `VITE_FOOTPRINT_MAP_TENCENT_KEY` | App（Android / iOS / 鸿蒙）、H5 | [腾讯位置服务 - Key 管理](https://lbs.qq.com/dev/console/key/manage) | App 端走 web 方案，HBuilderX 需 4.31+；**申请时「页面域名白名单」必须留空**；HBuilderX 4.36+ 起同一个 Key 可同时用于 H5 |
-| `VITE_FOOTPRINT_MAP_AMAP_ANDROID_KEY` | App（Android） | [高德开放平台控制台](https://console.amap.com/dev/key/app) | 原生 SDK 方案，需在云打包时勾选 `Maps` 模块；申请的**包名 + SHA1 签名必须与云打包配置一致** |
-| `VITE_FOOTPRINT_MAP_AMAP_IOS_KEY` | App（iOS） | [高德开放平台控制台](https://console.amap.com/dev/key/app) | 申请的 **Bundle ID 必须与打包配置一致** |
+| `VITE_FOOTPRINT_MAP_TENCENT_KEY` | App（Android / iOS / 鸿蒙）、H5 | [腾讯位置服务 - Key 管理](https://lbs.qq.com/dev/console/key/manage) | App 端走 web 方案，HBuilderX 需 4.31+，**不需要勾选 `Maps` 模块**；**申请时「页面域名白名单」必须留空**；HBuilderX 4.36+ 起同一个 Key 可同时用于 H5 |
+| `VITE_FOOTPRINT_MAP_AMAP_ANDROID_KEY` | App（Android） | [高德开放平台控制台](https://console.amap.com/dev/key/app) | 原生 SDK 方案，**需在 HBuilderX 的 `App模块配置` 勾选 `Maps`**；申请的**包名 + SHA1 签名必须与云打包配置一致** |
+| `VITE_FOOTPRINT_MAP_AMAP_IOS_KEY` | App（iOS） | [高德开放平台控制台](https://console.amap.com/dev/key/app) | 同样需勾选 `Maps`；申请的 **Bundle ID 必须与打包配置一致** |
 | `VITE_FOOTPRINT_MAP_AMAP_JSKEY` | H5 | [高德开放平台控制台](https://console.amap.com/dev/key/app) | 服务平台需选「Web端（JS API）」，HBuilderX 3.6.0+ |
 | `VITE_FOOTPRINT_MAP_AMAP_SECURITY_JS_CODE` | H5 | [高德开放平台控制台](https://console.amap.com/dev/key/app) | 2021-12-02 之后申请的 Key 必须搭配安全密钥，否则地图无法渲染 |
 
 ::: tip 选哪个更省事
-只跑 H5 或只发小程序：用腾讯 Key 即可（微信小程序端的 `<map>` 由微信提供腾讯地图底图，不需要你申请 Key）。
-要发 App 包：腾讯 Key 只需一个，且不需要勾选 `Maps` 模块、不受包名签名约束，是最省事的路径；用高德则必须保证云打包的包名、签名、Bundle ID 与申请时完全一致，否则真机地图不显示。
+**只发微信小程序**：什么都不用配，`env/.env.local` 保持空即可，因为 `<map>` 底图由微信提供。
+
+**只跑 H5**：填一个腾讯 Key 就够，不用勾任何模块。
+
+**要发 App 包**：腾讯 Key 只需一个，且不需要勾选 `Maps` 模块、不受包名与签名约束，是最省事的路径；用高德则必须勾选 `Maps` 模块，并保证云打包的包名、签名、Bundle ID 与申请时完全一致，否则真机地图不显示。
 :::
 
-### 2.3 关于 Key 泄露风险的官方建议
+### 2.4 关于 Key 泄露风险的官方建议
 
 腾讯官方在文档中明确提示：安卓 / iOS 端写在 `manifest.json` 里的 Key 仅用于展示地图，**建议把该 Key 的所有 API 配额设为 0**，避免 Key 泄露后产生额外资源消耗。这一点对「H5 + 腾讯」同样适用，因为 H5 的 Key 会明文出现在页面请求中。
 
@@ -132,14 +150,15 @@ git status --short && git diff --cached
 - 三方地图 / 定位服务属于**商业收费**服务，正式商用需向服务商购买商业授权（公益类应用可申请豁免），详见 uni-app 官方文档的商业授权说明；
 - 高德 H5 的 `securityJsCode` 支持「代理服务器转发」和「明文设置」两种方式，前者安全性更高，详见 [高德 JS API 安全密钥使用](https://lbs.amap.com/api/jsapi-v2/guide/abc/prepare)。
 
-### 2.4 配置没生效怎么排查
+### 2.5 配置没生效怎么排查
 
 1. Key 写在 `env/.env.local` 后需要**重启开发服务**（`pnpm dev` / `pnpm dev:app`），改 `manifest.config.ts` 同理；
 2. 构建产物 `src/manifest.json` 是由 `manifest.config.ts` 生成的（已被 `.gitignore` 忽略），可以打开它确认 `h5.sdkConfigs.maps` 与 `app-plus.distribute.sdkConfigs.maps` 下是否出现了你配置的图商节点；
-3. App 端提示「打包时未添加 map 模块」，说明当前走的是高德原生 SDK 而云打包未勾选 `Maps` 模块，改用腾讯 Key 可以绕过；
-4. 地图能显示但位置偏移，检查坐标是否为 `gcj02`（除谷歌地图外，uni-app `<map>` 组件统一使用国测局坐标）。
+3. App 端提示「打包时未添加 map 模块」，说明当前走的是高德原生 SDK 而 HBuilderX 里没勾选 `Maps` 模块，去 `dist/build/app/manifest.json` 的 `App模块配置` 勾上，或改用腾讯 Key（不需要勾模块）绕过；
+4. 模块勾了、Key 也填了，但真机地图仍空白，检查高德申请的包名 + SHA1 签名 / Bundle ID 是否与云打包配置完全一致；
+5. 地图能显示但位置偏移，检查坐标是否为 `gcj02`（除谷歌地图外，uni-app `<map>` 组件统一使用国测局坐标）。
 
-### 2.5 参考文档
+### 2.6 参考文档
 
 配置过程中建议以以下官方文档为准，本项目只是把常见路径做了一层封装：
 
@@ -147,6 +166,7 @@ git status --short && git diff --cached
 - [manifest.json 应用配置 - App SDK 配置（maps）](https://uniapp.dcloud.net.cn/collocation/manifest.html) —— `sdkConfigs.maps` 的字段含义与完整示例
 - [manifest.json 应用配置 - H5 SDK 配置（maps）](https://uniapp.dcloud.net.cn/collocation/manifest.html#h5) —— H5 端 `tencent` / `amap` / `google` / `bmap` 节点与版本要求
 - [地图（App 原生地图模块）](https://uniapp.dcloud.net.cn/tutorial/app-maps.html) —— App 端高德 / 百度地图的申请与模块勾选
+- [App 模块配置](https://uniapp.dcloud.net.cn/tutorial/app-modules.html) —— 模块标识表与「打包时未添加 xxx 模块」的成因
 - [Geolocation 定位与商业授权](https://uniapp.dcloud.net.cn/tutorial/app-geolocation.html#lic) —— 三方地图的收费与授权风险
 - [uni.chooseLocation](https://uniapp.dcloud.net.cn/api/location/choose-location.html) —— 为什么 App 端 Key 只用于展示地图
 - [环境变量（.env）](https://uniapp.dcloud.net.cn/tutorial/env.html) —— `.env` 与 `.env.local` 的加载规则

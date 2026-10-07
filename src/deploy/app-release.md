@@ -74,9 +74,66 @@ pnpm build:app
 iOS 需要苹果开发者账号与相关证书（描述文件），并在 macOS 上操作，流程相对复杂。可勾选 `iOS（ipa包）` 并按面板提示填写 iOS 证书信息；详细流程可参考 [DCloud iOS 打包文档](https://ask.dcloud.net.cn/article/198)。
 :::
 
-## 6. 打包常见问题
+## 6. 模块配置（App 模块权限）
 
-### 6.1 版本不匹配（白屏 / 弹窗提示）
+App 端的能力依赖原生模块，**没勾选就会在运行时弹「HTML5+Runtime 打包时未添加 xxx 模块」**，对应功能直接不可用。
+
+配置入口：HBuilderX 中打开 `dist/build/app/manifest.json`，切换到 **App 模块配置** 标签页，按需勾选。
+
+::: warning 为什么必须手动勾
+自 HBuilderX 3.6.11 起，为避免 App 隐私合规检测误报包含麦克风、相机/相册等敏感权限，`Barcode`、`Camera`、`Orientation`、`Record` 已从「默认包含」改为**独立功能模块**，云端打包时默认不再包含，必须手动勾选。
+:::
+
+### 6.1 需要勾选的模块清单
+
+| 模块名称 | 模块标识 | 本项目用在哪 | 不勾选的后果 |
+|----------|----------|--------------|--------------|
+| Barcode(扫码) | `Barcode` | 「我的」页导航栏的扫一扫 | 扫一扫不可用 |
+| Camera&Gallery(相机和相册) | `Camera` | 头像上传、笔记/瞬间/相册发布、后台图片上传 | 无法调起相机拍照、无法选择相册图片 |
+| VideoPlayer(视频播放) | `VideoPlayer` | 瞬间视频播放（`uni.createVideoContext`） | 视频无法播放、控制台报模块缺失 |
+| Maps(地图) | `Maps` | 足迹地图（**可选，不用足迹可不勾**） | 足迹地图无法显示 |
+| Android X5 Webview(腾讯TBS) | `Webview-x5` | Android 端 webview 内核（**可选，仅优化项**） | 不勾也能运行，低端机 webview 兼容性与流畅度较差 |
+
+`modules` 对应的源码视图写法：
+
+```json
+"app-plus": {
+  "modules": {
+    "Barcode": {},
+    "Camera": {},
+    "VideoPlayer": {},
+    "Maps": {},
+    "Webview-x5": {}
+  }
+}
+```
+
+::: tip 关于腾讯 TBS（X5 内核）
+X5 是腾讯的 Android Webview 内核，拉齐低端机的内核版本，兼容性更好、页面更流畅，同时内置的视频播放实现也更稳定。
+
+需要注意的是：
+
+- **仅 Android 生效**，iOS 只能使用系统自带的 WKWebView；
+- 属于**可选优化项**，不勾选应用也能正常发布，只是走系统 Webview；
+- 云打包的 APK 首次安装运行时内核可能尚未下载完成，此时仍由系统 Webview 渲染，下载完成后杀掉进程重进才会切换；
+- 由于内核采用动态下载机制，**无法提交 Google Play**；
+- `manifest.config.ts` 的 `abiFilters` 已配置 `armeabi-v7a` 与 `arm64-v8a`，满足 X5 的 CPU 类型要求（不支持 `x86`）。
+
+官方文档：[Android X5 Webview](https://uniapp.dcloud.net.cn/tutorial/app-android-x5.html)、[App 模块配置](https://uniapp.dcloud.net.cn/tutorial/app-modules.html)。
+:::
+
+### 6.2 足迹地图的模块与 Key
+
+足迹地图额外需要在 **App SDK 配置**里填地图 Key，两者是独立的两件事：**模块勾了但没填 Key，地图依然出不来**。
+
+- 用腾讯 Key（推荐）：`manifest.config.ts` 已自动处理，腾讯走 web 方案**不需要勾选 `Maps` 模块**；
+- 用高德 Key：走原生 SDK，**必须勾选 `Maps` 模块**，且申请的包名 + SHA1 签名 / Bundle ID 要与云打包配置一致，否则真机不显示。
+
+Key 的申请与 `.env.local` 配置方式详见 [应用配置 - 地图 Key 配置](app-config.md#_2-地图-key-配置-足迹地图)。
+
+## 7. 打包常见问题
+
+### 7.1 版本不匹配（白屏 / 弹窗提示）
 
 HBuilderX 版本需要与项目依赖的 uni-app SDK 版本匹配。查看 `package.json` 中 `@dcloudio/uni-app` 的版本号（如 `3.0.0-4010420240430001` 表示 SDK 版本 `4.14`）：
 
@@ -93,18 +150,18 @@ HBuilderX 版本需要与项目依赖的 uni-app SDK 版本匹配。查看 `pack
 - 点击 `忽略` 后若可正常使用则无需处理（项目 `manifest.config.ts` 已配置 `app-plus.compatible.ignoreVersion: true`）
 - 若出现白屏等异常，请将 HBuilderX 升级到与 uni-app SDK 一致的版本
 
-### 6.2 minSdkVersion 打包解析失败
+### 7.2 minSdkVersion 打包解析失败
 
 云打包若出现解析问题，可将 `manifest.config.ts` 中 Android 的 `minSdkVersion` 调低（最低 `21`，不能低于 `21`；项目模板当前为 `21`）：
 
 ![Android minSdkVersion 设置](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static@main/docs/app-release/11-manifest-Android设置-minSdkVersion.png)
 
-### 6.3 多 HBuilderX 版本共存
+### 7.3 多 HBuilderX 版本共存
 
 如需同时开发其他项目，可安装多个 HBuilderX 版本（macOS 直接重命名应用；Windows 安装到不同目录）：
 
 ![Mac 多版本 HBuilderX](https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static@main/docs/app-release/15-Mac多版本HBuilderX.png)
 
-## 7. 应用更新
+## 8. 应用更新
 
 APP 端内置了升级弹窗组件（`uh-upgrade`），配合插件端的应用信息与版本管理实现应用内更新提示，具体见 [控制台功能 - 应用管理](/plugin/console)。
