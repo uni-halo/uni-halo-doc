@@ -55,6 +55,19 @@ VITE_SERVER_BASEURL__WEIXIN_RELEASE = 'https://你的域名'
 
 详见 [应用配置](app-config.md)。
 
+### 3.3 配置地图 Key（使用足迹地图时必做）
+
+::: danger 切勿把地图 Key 提交到公开仓库
+地图 Key 是付费凭据，公开仓库里的 Key 会被他人盗刷，导致配额耗尽、地图停服或账号被风控。请把真实 Key 写在**不会被 Git 追踪**的 `env/.env.local`，`env/.env` 只保留空占位，并优先采用腾讯 Key（无需勾选模块、不受包名签名约束）。
+:::
+
+```ini
+# env/.env.local（此文件不会被提交）
+VITE_FOOTPRINT_MAP_TENCENT_KEY = '你的腾讯地图 Key'
+```
+
+详细说明、图商选择、泄露应急处理与官方参考文档，见 [应用配置 - 地图 Key 配置](app-config.md#_2-地图-key-配置-足迹地图)。
+
 ## 四、本地运行验证
 
 ```bash
