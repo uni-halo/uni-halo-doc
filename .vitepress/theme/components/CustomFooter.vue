@@ -1,11 +1,11 @@
 <template>
     <div class="page-footer">
-        <h1 class="name">UNI-HALO v3.x</h1>
+        <h1 class="name"><a href="https://uni-halo.ialley.cn" target="_self" title="uni-halo">UniHalo v3.x</a></h1>
         <div class="desc">—— 视尔唯一·心之所向·素履而往 ——</div>
         <div class="desc">颜值较高的一款 Halo2.x 的小程序源码，欢迎体验</div>
         <div class="img-list">
-            <img class="qrcode" src="https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static@main/images/mp.jpeg" data-fancybox="gallery"/>
-            <img class="qrcode" src="https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static@main/images/qqqun.jpeg" data-fancybox="gallery"/>
+            <img class="qrcode" src="https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/images/mp.jpeg" data-fancybox="gallery"/>
+            <img class="qrcode" src="https://gcore.jsdelivr.net/gh/uni-halo/uni-halo-static/images/qqqun.jpeg" data-fancybox="gallery"/>
         </div>
     </div>
 </template>
@@ -42,6 +42,7 @@
 }
 .qrcode {
     width: 300px;
+    border-radius: 12px;
 }
 @media (max-width: 768px) {
     .img-list {
